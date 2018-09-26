@@ -1,12 +1,15 @@
 <%- toolbar -%>
 
 <div class="as-content">
-  <main class="as-main" style="background: #B5E0F9;">
+  <main class="as-main">
     <div class="as-map-area">
+      <%- map -%>
 
+      <%- panels -%>
+
+      <%- footer -%>
     </div>
 
-    <!-- quitar espacios de aqui-->
     <% sidebars.map(sidebar => { %>
       <%- sidebar -%>
     <% }); %>
