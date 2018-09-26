@@ -15,7 +15,7 @@
   <%- style -%>
 </head>
 
-<body class="as-app">
+<body class="as-app<% if (options.toolbar) { %> as-app--nav-<%- options.toolbar.position -%><% } %>">
   <%- layout -%>
 
   <script src="src/app.js"></script>

@@ -1,27 +1,31 @@
 import Scaffoldings from './scaffolding';
 import Partials from './partials';
+import { generateBundle } from './bundle';
 
 function convertToTemplate (baseData) {
   return {
-    // style: Partials.generateStyle(baseData.ui),
+    style: Partials.generateStyle(baseData.ui),
     layout: Partials.generateLayout(baseData.layout),
-    visualization: Partials.generateVisualization(baseData.visualization)
+    visualization: Partials.generateVisualization(baseData.visualization),
+    options: {
+      toolbar: { position: baseData.layout.toolbar.position }
+    }
   };
 }
 
 const baseData = {
   ui: {
     colors: {
-      primary: '#1785FB',
-      secondary: '#0F2D53',
-      complementary: '#47DB99'
+      primary: '#00FF00',
+      secondary: '#FABADA',
+      complementary: '#909090'
     }
   },
   layout: {
-    toolbar: { position: 'top' },
+    toolbar: { position: 'left' },
     sidebars: [
       { position: 'left', size: 'l'},
-      { position: 'right', size: 'xl'}
+      { position: 'right', size: 'l'}
     ],
     panels: [
       { horizontalPosition: 'top', verticalPosition: 'left'},
@@ -37,4 +41,5 @@ const baseData = {
 };
 
 // Create Vanilla scaffolding
-console.log(Scaffoldings.vanilla(convertToTemplate(baseData)))
+const fileDefinitions = Scaffoldings.vanilla(convertToTemplate(baseData));
+generateBundle(fileDefinitions);
