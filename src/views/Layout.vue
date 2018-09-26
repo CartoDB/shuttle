@@ -43,6 +43,10 @@
             <img :src="`https://avatars.githubusercontent.com/${hamOrButi}`" />
             <span>7R</span>
           </div>
+          <div class="bookmark">
+            <img src="https://avatars.githubusercontent.com/matallo" />
+            <span>Transferwise</span>
+          </div>
         </div>
         <div class="browser-content">
         </div>
