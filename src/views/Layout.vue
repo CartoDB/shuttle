@@ -49,10 +49,92 @@
           </div>
         </div>
         <div class="browser-content">
+          <div class="browser-contentElement browser-contentElement--lateralToolbar-left" data-section="lateralToolbar"></div>
+          <div class="browser-contentElement browser-contentElement--lateralToolbar-right" data-section="lateralToolbar"></div>
+          <div class="browser-contentElement browser-contentElement--topToolbar" data-section="topToolbar"></div>
+          <div class="browser-contentElement browser-contentElement--sideBar--left" data-section="sideBar"></div>
+          <div class="browser-contentElement browser-contentElement--sideBar--right" data-section="sideBar"></div>
+          <div class="browser-contentElement browser-contentElement--footer" data-section="footer"></div>
+          <div class="browser-contentElement browser-contentElement--panelTopLeft" data-section="panel"></div>
+          <div class="browser-contentElement browser-contentElement--panelTopRight" data-section="panel"></div>
+          <div class="browser-contentElement browser-contentElement--panelBottomLeft" data-section="panel"></div>
+          <div class="browser-contentElement browser-contentElement--panelBottomRight" data-section="panel"></div>
         </div>
-
       </div>
     </div>
+
+
+    <ul class="template-inner">
+      <li class="template-innerItem">
+        <div class="template-innerItemMedia">
+          <svg width="24px" height="74px" viewBox="0 0 24 74" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <rect id="Rectangle-Copy-2" fill="#2D51E7" x="0" y="0" width="24" height="74" rx="4"></rect>
+            <rect id="Rectangle-4" fill="#5675ED" x="8" y="57" width="9" height="9"></rect>
+          </svg>
+        </div>
+        <p>Lateral Toolbar</p>
+      </li>
+      <li class="template-innerItem is-inactive">
+        <div class="template-innerItemMedia">
+          <svg width="89px" height="17px" viewBox="0 0 89 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <rect id="Rectangle-Copy-3" fill="#2D51E7" x="0" y="0" width="89" height="17" rx="4"></rect>
+            <rect id="Rectangle-4-Copy" fill="#5675ED" x="6" y="4" width="9" height="9"></rect>
+          </svg>
+        </div>
+        <p>Top Toolbar</p>
+      </li>
+      <li class="template-innerItem">
+        <div class="template-innerItemMedia">
+            <svg width="75px" height="76px" viewBox="0 0 75 76" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <rect id="Rectangle" fill="#2D51E7" x="0" y="0" width="75" height="76" rx="4"></rect>
+              <rect id="Rectangle-2" fill="#5874ED" x="7" y="10" width="57" height="4"></rect>
+              <rect id="Rectangle-2-Copy" fill="#5874ED" x="7" y="19" width="30" height="14"></rect>
+              <rect id="Rectangle-2-Copy-2" fill="#5874ED" x="7" y="37" width="30" height="3"></rect>
+              <rect id="Rectangle-2-Copy-3" fill="#5874ED" x="7" y="46" width="40" height="3"></rect>
+              <rect id="Rectangle-2-Copy-4" fill="#5874ED" x="7" y="55" width="60" height="3"></rect>
+              <rect id="Rectangle-2-Copy-5" fill="#5874ED" x="7" y="64" width="40" height="3"></rect>
+            </svg>
+        </div>
+        <p>Sidebar</p>
+      </li>
+      <li class="template-innerItem">
+        <div class="template-innerItemMedia">
+            <svg width="125px" height="54px" viewBox="0 0 125 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <rect id="Rectangle-Copy" fill="#2D51E7" x="0" y="0" width="125" height="54" rx="4"></rect>
+                        <rect id="Rectangle-2-Copy-6" fill="#5874ED" x="9" y="11" width="44" height="4"></rect>
+                        <rect id="Rectangle-3" fill="#5675ED" x="10" y="26" width="8" height="18"></rect>
+                        <rect id="Rectangle-3-Copy-5" fill="#5675ED" x="60" y="26" width="8" height="18"></rect>
+                        <rect id="Rectangle-3-Copy" fill="#5675ED" x="20" y="34" width="8" height="10"></rect>
+                        <rect id="Rectangle-3-Copy-6" fill="#5675ED" x="70" y="34" width="8" height="10"></rect>
+                        <rect id="Rectangle-3-Copy-2" fill="#5675ED" x="30" y="29" width="8" height="15"></rect>
+                        <rect id="Rectangle-3-Copy-7" fill="#5675ED" x="80" y="29" width="8" height="15"></rect>
+                        <rect id="Rectangle-3-Copy-3" fill="#5675ED" x="50" y="38" width="8" height="6"></rect>
+                        <rect id="Rectangle-3-Copy-8" fill="#5675ED" x="100" y="38" width="8" height="6"></rect>
+                        <rect id="Rectangle-3-Copy-4" fill="#5675ED" x="40" y="24" width="8" height="20"></rect>
+                        <rect id="Rectangle-3-Copy-9" fill="#5675ED" x="90" y="24" width="8" height="20"></rect>
+            </svg>
+
+        </div>
+        <p>Footer</p>
+      </li>
+      <li class="template-innerItem">
+        <div class="template-innerItemMedia">
+          <svg width="75px" height="54px" viewBox="0 0 75 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <rect id="Rectangle" fill="#2D51E7" x="0" y="0" width="75" height="54" rx="4"></rect>
+              <rect id="Rectangle-2" fill="#5874ED" x="7" y="10" width="4" height="4"></rect>
+              <rect id="Rectangle-2-Copy-6" fill="#5874ED" x="17" y="10" width="24" height="4"></rect>
+              <rect id="Rectangle-2-Copy" fill="#5874ED" x="7" y="20" width="4" height="4"></rect>
+              <rect id="Rectangle-2-Copy-7" fill="#5874ED" x="17" y="20" width="44" height="4"></rect>
+              <rect id="Rectangle-2-Copy-2" fill="#5874ED" x="7" y="30" width="4" height="4"></rect>
+              <rect id="Rectangle-2-Copy-8" fill="#5874ED" x="17" y="30" width="38" height="4"></rect>
+              <rect id="Rectangle-2-Copy-3" fill="#5874ED" x="7" y="40" width="4" height="4"></rect>
+              <rect id="Rectangle-2-Copy-9" fill="#5874ED" x="17" y="40" width="10" height="4"></rect>
+          </svg>
+        </div>
+        <p>Panels</p>
+      </li>
+    </ul>
+
   </div>
 </template>
 
@@ -64,7 +146,6 @@ export default {
       hamOrButi: 'xavijam'
     };
   },
-
   methods: {
     onEasterEgg: function(e) {
       if (e.ctrlKey && e.shiftKey && e.keyCode === 66) {
@@ -73,11 +154,9 @@ export default {
       }
     }
   },
-
   mounted: function () {
     window.addEventListener('keydown', this.onEasterEgg, this);
   },
-
   destroyed: function () {
     window.removeEventListener('keydown', this.onEasterEgg, this);
   }
@@ -90,6 +169,8 @@ export default {
     max-width: 1220px;
     width: 100%;
     margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
   }
 
   .browser {
@@ -199,4 +280,145 @@ export default {
     margin-right: 4px;
   }
 
+  .template-inner {
+    margin-left: 48px;
+    width: 376px;
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 376px;
+    justify-content: space-between;
+  }
+
+  .template-innerItem {
+    background: #F7F9FA;
+    border-radius: 8px;
+    margin-bottom: 56px;
+    height: 143px;
+    background: #F7F9FA;
+    text-align: center;
+    position: relative;
+    width: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .template-innerItem:hover {
+    cursor: pointer;
+  }
+  .template-innerItem:hover:after, 
+  .template-innerItem.is-dragging:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    border: 2px dotted #2D51E8;
+    border-radius: 8px;
+  }
+  .template-innerItem.is-dragging {
+    background: #F7F9FA;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.14);
+  }
+  .template-innerItem.is-inactive svg {
+    opacity: .2;
+    filter: grayscale(1);
+  }
+  .template-innerItem.is-inactive p {
+    opacity: .4
+  }
+  .template-innerItem.is-inactive:hover:after {
+    display: none;
+  } 
+
+
+
+  .template-innerItem p {
+    font-size: 14px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+  }
+  .template-innerItem:last-child {
+    margin-bottom: 0;
+  }
+
+  .browser-contentElement {
+    border: 2px dotted #2D51E8;
+    border-radius: 8px;
+    position: absolute;
+  }
+
+    .browser-contentElement--lateralToolbar-left {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 52px;
+    }
+    .browser-contentElement--lateralToolbar-right {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 52px;
+    }
+    .browser-contentElement--topToolbar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 52px;
+      right: 0;
+    }
+    .browser-contentElement--sideBar--left {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 100px;
+    }
+    .browser-contentElement--sideBar--right {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100px;
+    }
+    .browser-contentElement--footer {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 100px;
+      right: 0;
+    }
+    .browser-contentElement--panelTopLeft {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 80px;
+      height: 80px;
+    }
+    .browser-contentElement--panelTopRight {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 80px;
+      height: 80px;
+    }
+    .browser-contentElement--panelBottomLeft {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 80px;
+      height: 80px;
+    }
+    .browser-contentElement--panelBottomRight {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 80px;
+      height: 80px;
+    }
 </style>
