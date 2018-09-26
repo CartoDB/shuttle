@@ -1,10 +1,27 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import Colors from './views/Colors.vue';
+import Layout from './views/Layout.vue';
+import Data from './views/Data.vue';
+import Tech from './views/Tech.vue';
 
-Vue.use(Router)
+Vue.use(Router);
+
+const COLORS = 'colors';
+const LAYOUT = 'layout';
+const DATA = 'data';
+const TECH = 'tech';
+
+export const steps = [
+  COLORS,
+  LAYOUT,
+  DATA,
+  TECH
+];
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -12,12 +29,24 @@ export default new Router({
       component: Home
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      path: '/colors',
+      name: COLORS,
+      component: Colors
+    },
+    {
+      path: '/layout',
+      name: LAYOUT,
+      component: Layout
+    },
+    {
+      path: '/data',
+      name: DATA,
+      component: Data
+    },
+    {
+      path: '/tech',
+      name: TECH,
+      component: Tech
     }
   ]
 })
