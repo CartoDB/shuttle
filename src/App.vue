@@ -3,7 +3,9 @@
     <ProgressBar :progress="progress" />
     <div class="help">{{ helpForStep }}</div>
     <Progress :index="routeIndex" />
-    <router-view/>
+    <div class="main-view">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -17,6 +19,7 @@ export default {
     ProgressBar,
     Progress
   },
+
   computed: {
     routeIndex: function () {
       return steps.indexOf(this.$route.name);
@@ -52,5 +55,15 @@ export default {
   color: #727272;
   font-size: 14px;
   text-align: center;
+}
+
+#app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-view {
+  flex: 1;
 }
 </style>
