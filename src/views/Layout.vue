@@ -26,6 +26,24 @@
           </ul>
           <div class="browser-barAddress">http://www.airsephora.es<span></span></div>
         </div>
+        <div class="bookmarks-bar" v-if="easterEgg">
+          <div class="bookmark">
+            <img src="https://avatars.githubusercontent.com/javisantana" />
+            <span>BBVA</span>
+          </div>
+          <div class="bookmark">
+            <img src="https://avatars.githubusercontent.com/saleiva" />
+            <span>Zara</span>
+          </div>
+          <div class="bookmark">
+            <img src="https://avatars.githubusercontent.com/miguelarias" />
+            <span>Telefónica</span>
+          </div>
+          <div class="bookmark">
+            <img :src="`https://avatars.githubusercontent.com/${hamOrButi}`" />
+            <span>7R</span>
+          </div>
+        </div>
         <div class="browser-content">
         </div>
 
@@ -34,18 +52,47 @@
   </div>
 </template>
 
+<script>
+export default {
+  data: function () {
+    return {
+      easterEgg: false,
+      hamOrButi: 'xavijam'
+    };
+  },
+
+  methods: {
+    onEasterEgg: function(e) {
+      if (e.ctrlKey && e.shiftKey && e.keyCode === 66) {
+        this.easterEgg = !this.easterEgg;
+        this.hamOrButi = Math.random() > 0.5 ? 'nobuti' : 'xavijam';
+      }
+    }
+  },
+
+  mounted: function () {
+    window.addEventListener('keydown', this.onEasterEgg, this);
+  },
+
+  destroyed: function () {
+    window.removeEventListener('keydown', this.onEasterEgg, this);
+  }
+}
+</script>
+
 
 <style scoped>
+  .container {
+    max-width: 1220px;
+    width: 100%;
+    margin: 0 auto;
+  }
 
-.container {
-  max-width: 1220px;
-  width: 100%;
-  margin: 0 auto;
-}
-.browser {
-  max-width: 880px;
-  width: 100%;
-}
+  .browser {
+    max-width: 880px;
+    width: 100%;
+  }
+
   .browser-header {
     background: #E8EAED;
     border-top-right-radius: 4px;
@@ -95,6 +142,7 @@
     bottom: 0;
     left: 0;
     border: 1px solid rgba(0, 0, 0, 0.05);
+    pointer-events: none;
   }
   .browser-content {
     position: relative;
@@ -127,5 +175,24 @@
     @keyframes blinker { 
       from { opacity: 1.0; } to { opacity: 0.0; }
     }
+
+  .bookmark {
+    padding: 4px;
+    font-size: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .bookmark:hover {
+    background-color: #dedede;
+  }
+
+  .bookmark img {
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+  }
 
 </style>
