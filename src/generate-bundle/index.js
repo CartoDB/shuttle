@@ -1,11 +1,11 @@
 import Scaffoldings from './scaffolding';
 import Partials from './partials';
-console.log(Partials)
+
 function convertToTemplate (baseData) {
   return {
     // style: Partials.generateStyle(baseData.ui),
     layout: Partials.generateLayout(baseData.layout),
-    // visualization: Partials.generateVisualization(baseData.visualization)
+    visualization: Partials.generateVisualization(baseData.visualization)
   };
 }
 
@@ -30,6 +30,9 @@ const baseData = {
       { horizontalPosition: 'bottom', verticalPosition: 'right'}
     ],
     footer: {}
+  },
+  visualization: {
+    library: 'cartovl'
   }
 };
 
