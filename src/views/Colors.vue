@@ -107,5 +107,6 @@ export default {
   align-items: center;
   justify-content: flex-end;
   padding-bottom: 52px;
+  transition: background-color 0.2s linear;
 }
 </style>
