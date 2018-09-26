@@ -8,12 +8,11 @@
 
   <title>Project Title</title>
 
-  <!-- Include CARTO VL JS -->
-<script src="https://libs.cartocdn.com/carto-vl/v0.8.0/carto-vl.js"></script>
-<!-- Include Mapbox GL JS -->
-<script src="https://libs.cartocdn.com/mapbox-gl/v0.48.0-carto1/mapbox-gl.js"></script>
-<!-- Include Mapbox GL CSS -->
-<link href="https://libs.cartocdn.com/mapbox-gl/v0.48.0-carto1/mapbox-gl.css" rel="stylesheet" />
+  <!-- Include Leaflet -->
+<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+<link href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" rel="stylesheet">
+<!-- Include CARTO.js -->
+<script src="https://libs.cartocdn.com/carto.js/v4.1.6/carto.min.js"></script>
 
   <!-- Include CSS  -->
 <link rel="stylesheet" href="https://libs.cartocdn.com/airship-style/v1.0.0-alpha.44/airship.css">
@@ -29,7 +28,7 @@
 <div class="as-content">
   <main class="as-main">
     <div class="as-map-area">
-      <div class="map"></div>
+      <div id="map"></div>
 
       <div class="as-map-panels">
 
@@ -70,4 +69,3 @@
 </body>
 
 </html>
-

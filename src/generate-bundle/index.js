@@ -32,7 +32,7 @@ const baseData = {
     footer: {}
   },
   visualization: {
-    library: 'cartovl'
+    library: 'cartojs'
   }
 };
 
