@@ -52,10 +52,11 @@ export default {
     },
     dragenterZone(e) {
       e.target.style['backgroundColor'] = '#FABADA';
+      e.target.style['transform'] = 'scale(.95)';
     },
     dragleaveZone(e) {
       const [element, ...position] = e.target.dataset.layout.split('|');
-
+      e.target.style['transform'] = 'scale(1)';
       // Don't unset if already selected
       if (!this.isSelected(element, position)) {
         e.target.style['backgroundColor'] = null;
