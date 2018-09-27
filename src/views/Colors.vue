@@ -1,8 +1,4 @@
 <template>
-
-
-
-
   <div class="color-wrapper">
     <div :style="{ 'background-color': primaryColor }" class="colorBar">
       <span class="color-label color-type">Primary</span>
@@ -30,7 +26,9 @@ export default {
       },
 
       set (value) {
-        this.$store.commit('setPrimaryColor', value);
+        if (value.length === 7) {
+          this.$store.commit('setPrimaryColorAndRandomize', value);
+        }
       }
     },
 

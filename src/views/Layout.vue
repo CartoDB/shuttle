@@ -1,6 +1,11 @@
 <template>
   <div class="inner">
     <div class="container">
+      <select v-model="basemap">
+        <option value="voyager" selected>Voyager</option>
+        <option value="darkmatter">Dark Matter</option>
+      </select>
+
       <div class="browser">
         <div class="browser-header">
           <span class="browser-headerPoint browser-headerPoint--red"></span>
@@ -49,13 +54,13 @@
               <span>Transferwise</span>
             </div>
           </div>
-          <BrowserDrop :draggingElement="draggingElement" />
+          <BrowserDrop :basemap="currentBasemap" :draggingElement="draggingElement" />
         </div>
         </div>
 
 
     <ul class="template-inner">
-      <li class="template-innerItem" draggable="true" @mouseover="onDrag" @mouseout="onDragEnd" @drag="onDrag" @dragend="onDragEnd" data-type="lateralToolbar">
+      <li class="template-innerItem" :class="{'is-inactive': hasToolbar}" draggable="true" @mouseover="onDrag" @mouseout="onDragEnd" @drag="onDrag" @dragend="onDragEnd" data-type="lateralToolbar">
         <div class="template-innerItemMedia">
           <svg width="24px" height="74px" viewBox="0 0 24 74" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <rect id="Rectangle-Copy-2" fill="#2D51E7" x="0" y="0" width="24" height="74" rx="4"></rect>
@@ -64,7 +69,7 @@
         </div>
         <p>Lateral Toolbar</p>
       </li>
-      <li class="template-innerItem" draggable="true" @mouseover="onDrag" @mouseout="onDragEnd" @drag="onDrag" @dragend="onDragEnd" data-type="topToolbar">
+      <li class="template-innerItem" :class="{'is-inactive': hasToolbar}" draggable="true" @mouseover="onDrag" @mouseout="onDragEnd" @drag="onDrag" @dragend="onDragEnd" data-type="topToolbar">
         <div class="template-innerItemMedia">
           <svg width="89px" height="17px" viewBox="0 0 89 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <rect id="Rectangle-Copy-3" fill="#2D51E7" x="0" y="0" width="89" height="17" rx="4"></rect>
@@ -73,7 +78,7 @@
         </div>
         <p>Top Toolbar</p>
       </li>
-      <li class="template-innerItem" draggable="true" @mouseover="onDrag" @mouseout="onDragEnd" @drag="onDrag" @dragend="onDragEnd" data-type="sidebar">
+      <li class="template-innerItem" :class="{'is-inactive': hasAllSidebars}" draggable="true" @mouseover="onDrag" @mouseout="onDragEnd" @drag="onDrag" @dragend="onDragEnd" data-type="sidebar">
         <div class="template-innerItemMedia">
             <svg width="75px" height="76px" viewBox="0 0 75 76" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <rect id="Rectangle" fill="#2D51E7" x="0" y="0" width="75" height="76" rx="4"></rect>
@@ -87,7 +92,7 @@
         </div>
         <p>Sidebar</p>
       </li>
-      <li class="template-innerItem" draggable="true" @mouseover="onDrag" @mouseout="onDragEnd" @drag="onDrag" @dragend="onDragEnd" data-type="footer">
+      <li class="template-innerItem" :class="{'is-inactive': hasFooter}" draggable="true" @mouseover="onDrag" @mouseout="onDragEnd" @drag="onDrag" @dragend="onDragEnd" data-type="footer">
         <div class="template-innerItemMedia">
             <svg width="125px" height="54px" viewBox="0 0 125 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <rect id="Rectangle-Copy" fill="#2D51E7" x="0" y="0" width="125" height="54" rx="4"></rect>
@@ -106,7 +111,7 @@
           </div>
           <p>Footer</p>
       </li>
-      <li class="template-innerItem" draggable="true" @mouseover="onDrag" @mouseout="onDragEnd" @drag="onDrag" @dragend="onDragEnd" data-type="panel">
+      <li class="template-innerItem" :class="{'is-inactive': hasAllPanels}" draggable="true" @mouseover="onDrag" @mouseout="onDragEnd" @drag="onDrag" @dragend="onDragEnd" data-type="panel">
         <div class="template-innerItemMedia">
           <svg width="75px" height="54px" viewBox="0 0 75 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <rect id="Rectangle" fill="#2D51E7" x="0" y="0" width="75" height="54" rx="4"></rect>
@@ -130,6 +135,13 @@
 
 <script>
 import BrowserDrop from '../components/BrowserDrop'
+import darkmatter from '@/assets/images/basemaps/darkmatter.png'
+import voyager from '@/assets/images/basemaps/voyager.png'
+
+const BASEMAPS = {
+  darkmatter,
+  voyager
+};
 
 export default {
   name: 'Layout',
@@ -140,8 +152,26 @@ export default {
     return {
       easterEgg: false,
       hamOrButi: 'xavijam',
+      basemap: 'voyager',
       draggingElement: null
     };
+  },
+  computed: {
+    currentBasemap() {
+      return BASEMAPS[this.basemap];
+    },
+    hasToolbar() {
+      return this.$store.state.layout.toolbar.position !== undefined;
+    },
+    hasAllSidebars() {
+      return this.$store.state.layout.sidebars.length === 2;
+    },
+    hasAllPanels() {
+      return this.$store.state.layout.panels.length === 4;
+    },
+    hasFooter() {
+      return this.$store.state.layout.footer !== null;
+    }
   },
   methods: {
     onDrag: function (e) {
@@ -317,6 +347,9 @@ export default {
   .template-innerItem.is-dragging {
     background: #F7F9FA;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.14);
+  }
+  .template-innerItem.is-inactive {
+    pointer-events: none;
   }
   .template-innerItem.is-inactive svg {
     opacity: .2;
