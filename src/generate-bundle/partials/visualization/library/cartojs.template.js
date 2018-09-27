@@ -1,4 +1,6 @@
-const map = L.map('map').setView([30, 0], 3);
+const map = L.map('map').fitBounds([
+  [<%- data.map.extent[1] -%>, <%- data.map.extent[0] -%>], [<%- data.map.extent[3] -%>, <%- data.map.extent[2] -%>]
+]);
 map.scrollWheelZoom.disable();
 
 L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/<%- data.map.basemap -%>/{z}/{x}/{y}.png', {
@@ -38,28 +40,28 @@ const marker_fill = '#EE4D5A';
 
 <% if (data.map.type === 'category') { %>
   <% if (data.map.geometry === 'point') { %>
-    const marker_width = ;
-    const marker_fill = `ramp([${column}], cartocolor(${colorRamp}), categories(7))`;
+    const marker_width = 7;
+    const marker_fill = `ramp([${column}], cartocolor(${colorRamp}), category(7))`;
   <% } %>
 
   <% if (data.map.geometry === 'line') { %>
-    const line_width = ;
-    const line_color = `ramp([${column}], cartocolor(${colorRamp}), categories(7))`;
+    const line_width = 1.5;
+    const line_color = `ramp([${column}], cartocolor(${colorRamp}), category(7))`;
   <% } %>
 
   <% if (data.map.geometry === 'polygon') { %>
-    const polygon_fill = `ramp([${column}], cartocolor(${colorRamp}), categories(7))`;
+    const polygon_fill = `ramp([${column}], cartocolor(${colorRamp}), category(7))`;
   <% } %>
 <% } %>
 
 <% if (data.map.type === 'choropleth' || data.map.type === 'gradient') { %>
   <% if (data.map.geometry === 'point') { %>
-    const marker_width = ;
+    const marker_width = 7;
     const marker_fill = `ramp([${column}], cartocolor(${colorRamp}), quantiles(7))`;
   <% } %>
 
   <% if (data.map.geometry === 'line') { %>
-    const line_width = ;
+    const line_width = 1.5;
     const line_color = `ramp([${column}], cartocolor(${colorRamp}), quantiles(7))`;
   <% } %>
 
@@ -73,7 +75,7 @@ const line_width = `ramp([${column}], range(1,2.5), quantiles(7))`;
 const line_color = `ramp([${column}], cartocolor(${colorRamp}), quantiles(7))`;
 <% } %>
 
-const cartoCSSStyle = `
+const cartoCSSStyle = new carto.style.CartoCSS(`
   <% if (data.map.geometry === 'point') { %>
   #layer['mapnik::geometry_type'=1] {
     marker-width: ${marker_width};
@@ -103,10 +105,9 @@ const cartoCSSStyle = `
         line-opacity: 0.5;
     }
   }
-  <% } %>
-`;
+  <% } %>`);
 
-const layer = new carto.layer.Layer(source, style);
+const layer = new carto.layer.Layer(source, cartoCSSStyle);
 
 client.addLayer(layer);
 client.getLeafletLayer().addTo(map);

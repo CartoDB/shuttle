@@ -9,11 +9,12 @@ import generateMapFooter from './map-footer/generate';
 import layout from './layout.template.html';
 
 export default function generateLayout (layoutData) {
-  const toolbar = generateToolbar(layoutData.toolbar);
+  console.log('layoutData', layoutData);
+  const toolbar = layoutData.toolbar ? generateToolbar(layoutData.toolbar) : '';
   const sidebars = layoutData.sidebars.map(generateSidebar);
   const map = generateMap(layoutData.map);
-  const panels = generatePanels(layoutData.panels);
-  const footer = generateMapFooter(layoutData.footer);
+  const panels = layoutData.panels.length ? generatePanels(layoutData.panels) : '';
+  const footer = layoutData.footer ? generateMapFooter(layoutData.footer) : '';
 
   return ejs.render(layout, {
     toolbar,

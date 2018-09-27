@@ -6,6 +6,8 @@ import { js, html } from 'js-beautify';
 import jsFile from './templates/app.template.js';
 import htmlFile from './templates/index.template.html';
 
+import injectTemplate from './templates/inject.template.html'
+
 // Library Imports
 import airshipImports from './templates/import/airship.template.html';
 import cartovlImports from './templates/import/cartovl.template.html';
@@ -27,7 +29,10 @@ export default function (data) {
   };
 
   return {
-    'src/app.js': js(ejs.render(jsFile, templateData), { "max_preserve_newlines": 2, "preserve_newlines": true }),
-    'index.html': html(ejs.render(htmlFile, templateData), { "max_preserve_newlines": 2, "preserve_newlines": true })
+    files: {
+      'src/app.js': js(ejs.render(jsFile, templateData), { "max_preserve_newlines": 2, "preserve_newlines": true }),
+      'index.html': html(ejs.render(htmlFile, templateData), { "max_preserve_newlines": 2, "preserve_newlines": true })
+    },
+    inject: ejs.render(injectTemplate, templateData)
   };
 }

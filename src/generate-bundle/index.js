@@ -3,13 +3,17 @@ import Partials from './partials';
 import { generateBundle } from './bundle';
 
 function convertToTemplate (baseData) {
+  const options = {};
+
+  if (baseData.layout.toolbar) {
+    options.toolbar = { position: baseData.layout.toolbar.position };
+  }
+
   return {
     style: Partials.generateStyle(baseData.ui),
     layout: Partials.generateLayout(baseData.layout),
     visualization: Partials.generateVisualization(baseData.visualization),
-    options: {
-      toolbar: { position: baseData.layout.toolbar.position }
-    }
+    options
   };
 }
 
@@ -36,18 +40,21 @@ const baseData = {
     footer: {}
   },
   visualization: {
-    library: 'cartojs',
+    library: 'cartovl',
     data: {
       apiKey: 'default_public',
       username: 'cartojs-test',
       map: {
-        // bubbles, categories, choropleth, gradient, flows
-        type: 'gradient',
-        geometry: 'line',
+        // bubbles, category, choropleth, gradient, flow
+        type: 'category',
+        geometry: 'point',
         basemap: 'voyager',
-        dataset: 'datasetdeprueba',
-        column: 'columnadeprueba',
-        colorRamp: 'rampadeprueba'
+        extent: [-3.888962, 40.312064, -3.518051, 40.643271],
+        dataset: 'airbnb_listings',
+        column: 'room_type',
+        // Only CARTO VL
+        columnType: 'string',
+        colorRamp: 'Burg'
       }
     }
   }
@@ -55,5 +62,5 @@ const baseData = {
 
 // Create Vanilla scaffolding
 const fileDefinitions = Scaffoldings.vanilla(convertToTemplate(baseData));
-// generateBundle(fileDefinitions);
+// generateBundle(fileDefinitions.files);
 console.log(fileDefinitions)
