@@ -19,6 +19,13 @@ export default new Vuex.Store({
       primary: '#FFA630',
       secondary: '#D7E8BA',
       complementary: '#2E5077'
+    },
+    data: {
+      mapType: null,
+      username: null,
+      dataset: null,
+      apiKey: null,
+      oauth: null
     }
   },
   mutations: {
@@ -30,6 +37,18 @@ export default new Vuex.Store({
     },
     setComplementaryColor: function (state, color) {
       state.color.complementary = color;
+    },
+    setUsername: function (state, username) {
+      state.data.username = username;
+    },
+    setDataset: function (state, dataset) {
+      state.data.dataset = dataset;
+    },
+    setApiKey: function (state, apiKey) {
+      state.data.apiKey = apiKey;
+    },
+    setMapType: function (state, mapType)  {
+      state.data.mapType = mapType;
     }
   },
   actions: {
