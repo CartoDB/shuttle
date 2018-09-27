@@ -26,7 +26,9 @@ export default {
       },
 
       set (value) {
-        this.$store.commit('setPrimaryColor', value);
+        if (value.length === 7) {
+          this.$store.commit('setPrimaryColorAndRandomize', value);
+        }
       }
     },
 
@@ -73,26 +75,26 @@ export default {
 .color-wrapper {
   display: flex;
   height: 100%;
-  position: relative;
+  flex-direction: column;
 }
 
 .color-label {
   color: white;
-  text-shadow: 0 0 4px #2f2f2f;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.10  );
 }
 
 .color-type {
-  font-size: 12px;
-  margin-bottom: 4px;
+  font: 400 16px/24px Karla;
+  margin-bottom: 8px;
+  opacity: .6;
 }
 
 .color-value {
-  font-size: 24px;
-  font-weight: bold;
+  font-weight: 700;
+  font-size: 36px;
   /* Input style removal */
   background: none;
   border: none;
-  text-align: center;
   outline: none;
 }
 
@@ -104,9 +106,8 @@ export default {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  padding-bottom: 52px;
-  transition: background-color 0.2s linear;
+  justify-content: center;
+  transition: all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+  padding-left: 40px;
 }
 </style>

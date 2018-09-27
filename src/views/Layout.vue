@@ -1,71 +1,66 @@
 <template>
-  <div class="container">
-    <div class="browser">
-      <div class="browser-header">
-        <span class="browser-headerPoint browser-headerPoint--red"></span>
-        <span class="browser-headerPoint browser-headerPoint--yellow"></span>
-        <span class="browser-headerPoint browser-headerPoint--green"></span>
-      </div>
-      <div class="browser-inner">
-        <div class="browser-bar">
-          <ul class="browser-barIcons">
-            <li class="browser-barIconsItem">
-              <svg width="8px" height="8px" viewBox="0 0 8 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                      <path d="M1.26544797,3.62351861 L7.25879652,3.62351861 L7.25879652,4.37648139 L1.26544797,4.37648139 L3.78796516,7.52962788 L3.2,8 L0,4 L3.2,0 L3.78796516,0.470372124 L1.26544797,3.62351861 Z" id="Combined-Shape" fill="#BABCBE" fill-rule="nonzero"></path>
-                  </g>
-              </svg>
-            </li>
-             <li class="browser-barIconsItem">
-              <svg width="8px" height="8px" viewBox="0 0 8 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                      <path d="M1.26544797,3.62351861 L7.25879652,3.62351861 L7.25879652,4.37648139 L1.26544797,4.37648139 L3.78796516,7.52962788 L3.2,8 L0,4 L3.2,0 L3.78796516,0.470372124 L1.26544797,3.62351861 Z" id="Combined-Shape-Copy" fill="#BABCBE" fill-rule="nonzero" transform="translate(3.629398, 4.000000) rotate(-180.000000) translate(-3.629398, -4.000000) "></path>
-                  </g>
-              </svg>
-            </li>
-          </ul>
-          <div class="browser-barAddress">http://www.airsephora.es<span></span></div>
+  <div class="inner">
+    <div class="container">
+      <select v-model="basemap">
+        <option value="voyager" selected>Voyager</option>
+        <option value="darkmatter">Dark Matter</option>
+      </select>
+
+      <div class="browser">
+        <div class="browser-header">
+          <span class="browser-headerPoint browser-headerPoint--red"></span>
+          <span class="browser-headerPoint browser-headerPoint--yellow"></span>
+          <span class="browser-headerPoint browser-headerPoint--green"></span>
         </div>
-        <div class="bookmarks-bar" v-if="easterEgg">
-          <div class="bookmark">
-            <img src="https://avatars.githubusercontent.com/javisantana" />
-            <span>BBVA</span>
+        <div class="browser-inner">
+          <div class="browser-bar">
+            <ul class="browser-barIcons">
+              <li class="browser-barIconsItem">
+                <svg width="8px" height="8px" viewBox="0 0 8 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <path d="M1.26544797,3.62351861 L7.25879652,3.62351861 L7.25879652,4.37648139 L1.26544797,4.37648139 L3.78796516,7.52962788 L3.2,8 L0,4 L3.2,0 L3.78796516,0.470372124 L1.26544797,3.62351861 Z" id="Combined-Shape" fill="#BABCBE" fill-rule="nonzero"></path>
+                    </g>
+                </svg>
+              </li>
+               <li class="browser-barIconsItem">
+                <svg width="8px" height="8px" viewBox="0 0 8 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <path d="M1.26544797,3.62351861 L7.25879652,3.62351861 L7.25879652,4.37648139 L1.26544797,4.37648139 L3.78796516,7.52962788 L3.2,8 L0,4 L3.2,0 L3.78796516,0.470372124 L1.26544797,3.62351861 Z" id="Combined-Shape-Copy" fill="#BABCBE" fill-rule="nonzero" transform="translate(3.629398, 4.000000) rotate(-180.000000) translate(-3.629398, -4.000000) "></path>
+                    </g>
+                </svg>
+              </li>
+            </ul>
+            <div class="browser-barAddress">http://www.airsephora.es<span></span></div>
           </div>
-          <div class="bookmark">
-            <img src="https://avatars.githubusercontent.com/saleiva" />
-            <span>Zara</span>
+          <div class="bookmarks-bar" v-if="easterEgg">
+            <div class="bookmark">
+              <img src="https://avatars.githubusercontent.com/javisantana" />
+              <span>BBVA</span>
+            </div>
+            <div class="bookmark">
+              <img src="https://avatars.githubusercontent.com/saleiva" />
+              <span>Zara</span>
+            </div>
+            <div class="bookmark">
+              <img src="https://avatars.githubusercontent.com/miguelarias" />
+              <span>Telefónica</span>
+            </div>
+            <div class="bookmark">
+              <img :src="`https://avatars.githubusercontent.com/${hamOrButi}`" />
+              <span>7R</span>
+            </div>
+            <div class="bookmark">
+              <img src="https://avatars.githubusercontent.com/matallo" />
+              <span>Transferwise</span>
+            </div>
           </div>
-          <div class="bookmark">
-            <img src="https://avatars.githubusercontent.com/miguelarias" />
-            <span>Telefónica</span>
-          </div>
-          <div class="bookmark">
-            <img :src="`https://avatars.githubusercontent.com/${hamOrButi}`" />
-            <span>7R</span>
-          </div>
-          <div class="bookmark">
-            <img src="https://avatars.githubusercontent.com/matallo" />
-            <span>Transferwise</span>
-          </div>
+          <BrowserDrop :basemap="currentBasemap" :draggingElement="draggingElement" />
         </div>
-        <div class="browser-content">
-          <div class="browser-contentElement browser-contentElement--lateralToolbar-left" data-section="lateralToolbar"></div>
-          <div class="browser-contentElement browser-contentElement--lateralToolbar-right" data-section="lateralToolbar"></div>
-          <div class="browser-contentElement browser-contentElement--topToolbar" data-section="topToolbar"></div>
-          <div class="browser-contentElement browser-contentElement--sideBar--left" data-section="sideBar"></div>
-          <div class="browser-contentElement browser-contentElement--sideBar--right" data-section="sideBar"></div>
-          <div class="browser-contentElement browser-contentElement--footer" data-section="footer"></div>
-          <div class="browser-contentElement browser-contentElement--panelTopLeft" data-section="panel"></div>
-          <div class="browser-contentElement browser-contentElement--panelTopRight" data-section="panel"></div>
-          <div class="browser-contentElement browser-contentElement--panelBottomLeft" data-section="panel"></div>
-          <div class="browser-contentElement browser-contentElement--panelBottomRight" data-section="panel"></div>
         </div>
-      </div>
-    </div>
 
 
     <ul class="template-inner">
-      <li class="template-innerItem">
+      <li class="template-innerItem" :class="{'is-inactive': hasToolbar}" draggable="true" @mouseover="onDrag" @mouseout="onDragEnd" @drag="onDrag" @dragend="onDragEnd" data-type="lateralToolbar">
         <div class="template-innerItemMedia">
           <svg width="24px" height="74px" viewBox="0 0 24 74" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <rect id="Rectangle-Copy-2" fill="#2D51E7" x="0" y="0" width="24" height="74" rx="4"></rect>
@@ -74,7 +69,7 @@
         </div>
         <p>Lateral Toolbar</p>
       </li>
-      <li class="template-innerItem is-inactive">
+      <li class="template-innerItem" :class="{'is-inactive': hasToolbar}" draggable="true" @mouseover="onDrag" @mouseout="onDragEnd" @drag="onDrag" @dragend="onDragEnd" data-type="topToolbar">
         <div class="template-innerItemMedia">
           <svg width="89px" height="17px" viewBox="0 0 89 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <rect id="Rectangle-Copy-3" fill="#2D51E7" x="0" y="0" width="89" height="17" rx="4"></rect>
@@ -83,7 +78,7 @@
         </div>
         <p>Top Toolbar</p>
       </li>
-      <li class="template-innerItem">
+      <li class="template-innerItem" :class="{'is-inactive': hasAllSidebars}" draggable="true" @mouseover="onDrag" @mouseout="onDragEnd" @drag="onDrag" @dragend="onDragEnd" data-type="sidebar">
         <div class="template-innerItemMedia">
             <svg width="75px" height="76px" viewBox="0 0 75 76" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <rect id="Rectangle" fill="#2D51E7" x="0" y="0" width="75" height="76" rx="4"></rect>
@@ -97,27 +92,26 @@
         </div>
         <p>Sidebar</p>
       </li>
-      <li class="template-innerItem">
+      <li class="template-innerItem" :class="{'is-inactive': hasFooter}" draggable="true" @mouseover="onDrag" @mouseout="onDragEnd" @drag="onDrag" @dragend="onDragEnd" data-type="footer">
         <div class="template-innerItemMedia">
             <svg width="125px" height="54px" viewBox="0 0 125 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <rect id="Rectangle-Copy" fill="#2D51E7" x="0" y="0" width="125" height="54" rx="4"></rect>
-                        <rect id="Rectangle-2-Copy-6" fill="#5874ED" x="9" y="11" width="44" height="4"></rect>
-                        <rect id="Rectangle-3" fill="#5675ED" x="10" y="26" width="8" height="18"></rect>
-                        <rect id="Rectangle-3-Copy-5" fill="#5675ED" x="60" y="26" width="8" height="18"></rect>
-                        <rect id="Rectangle-3-Copy" fill="#5675ED" x="20" y="34" width="8" height="10"></rect>
-                        <rect id="Rectangle-3-Copy-6" fill="#5675ED" x="70" y="34" width="8" height="10"></rect>
-                        <rect id="Rectangle-3-Copy-2" fill="#5675ED" x="30" y="29" width="8" height="15"></rect>
-                        <rect id="Rectangle-3-Copy-7" fill="#5675ED" x="80" y="29" width="8" height="15"></rect>
-                        <rect id="Rectangle-3-Copy-3" fill="#5675ED" x="50" y="38" width="8" height="6"></rect>
-                        <rect id="Rectangle-3-Copy-8" fill="#5675ED" x="100" y="38" width="8" height="6"></rect>
-                        <rect id="Rectangle-3-Copy-4" fill="#5675ED" x="40" y="24" width="8" height="20"></rect>
-                        <rect id="Rectangle-3-Copy-9" fill="#5675ED" x="90" y="24" width="8" height="20"></rect>
+              <rect id="Rectangle-Copy" fill="#2D51E7" x="0" y="0" width="125" height="54" rx="4"></rect>
+              <rect id="Rectangle-2-Copy-6" fill="#5874ED" x="9" y="11" width="44" height="4"></rect>
+              <rect id="Rectangle-3" fill="#5675ED" x="10" y="26" width="8" height="18"></rect>
+              <rect id="Rectangle-3-Copy-5" fill="#5675ED" x="60" y="26" width="8" height="18"></rect>
+              <rect id="Rectangle-3-Copy" fill="#5675ED" x="20" y="34" width="8" height="10"></rect>
+              <rect id="Rectangle-3-Copy-6" fill="#5675ED" x="70" y="34" width="8" height="10"></rect>
+              <rect id="Rectangle-3-Copy-2" fill="#5675ED" x="30" y="29" width="8" height="15"></rect>
+              <rect id="Rectangle-3-Copy-7" fill="#5675ED" x="80" y="29" width="8" height="15"></rect>
+              <rect id="Rectangle-3-Copy-3" fill="#5675ED" x="50" y="38" width="8" height="6"></rect>
+              <rect id="Rectangle-3-Copy-8" fill="#5675ED" x="100" y="38" width="8" height="6"></rect>
+              <rect id="Rectangle-3-Copy-4" fill="#5675ED" x="40" y="24" width="8" height="20"></rect>
+              <rect id="Rectangle-3-Copy-9" fill="#5675ED" x="90" y="24" width="8" height="20"></rect>
             </svg>
-
-        </div>
-        <p>Footer</p>
+          </div>
+          <p>Footer</p>
       </li>
-      <li class="template-innerItem">
+      <li class="template-innerItem" :class="{'is-inactive': hasAllPanels}" draggable="true" @mouseover="onDrag" @mouseout="onDragEnd" @drag="onDrag" @dragend="onDragEnd" data-type="panel">
         <div class="template-innerItemMedia">
           <svg width="75px" height="54px" viewBox="0 0 75 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <rect id="Rectangle" fill="#2D51E7" x="0" y="0" width="75" height="54" rx="4"></rect>
@@ -135,18 +129,57 @@
       </li>
     </ul>
 
+    </div>
   </div>
 </template>
 
 <script>
+import BrowserDrop from '../components/BrowserDrop'
+import darkmatter from '@/assets/images/basemaps/darkmatter.png'
+import voyager from '@/assets/images/basemaps/voyager.png'
+
+const BASEMAPS = {
+  darkmatter,
+  voyager
+};
+
 export default {
+  name: 'Layout',
+  components: {
+    BrowserDrop
+  },
   data: function () {
     return {
       easterEgg: false,
-      hamOrButi: 'xavijam'
+      hamOrButi: 'xavijam',
+      basemap: 'voyager',
+      draggingElement: null
     };
   },
+  computed: {
+    currentBasemap() {
+      return BASEMAPS[this.basemap];
+    },
+    hasToolbar() {
+      return this.$store.state.layout.toolbar.position !== undefined;
+    },
+    hasAllSidebars() {
+      return this.$store.state.layout.sidebars.length === 2;
+    },
+    hasAllPanels() {
+      return this.$store.state.layout.panels.length === 4;
+    },
+    hasFooter() {
+      return this.$store.state.layout.footer !== null;
+    }
+  },
   methods: {
+    onDrag: function (e) {
+      this.draggingElement = e.srcElement.dataset.type;
+    },
+    onDragEnd: function (e) {
+      this.draggingElement = null;
+    },
     onEasterEgg: function(e) {
       if (e.ctrlKey && e.shiftKey && e.keyCode === 66) {
         this.easterEgg = !this.easterEgg;
@@ -166,15 +199,12 @@ export default {
 
 <style scoped>
   .container {
-    max-width: 1220px;
-    width: 100%;
-    margin: 0 auto;
     display: flex;
     align-items: flex-start;
+    flex-direction: column;
   }
 
   .browser {
-    max-width: 880px;
     width: 100%;
   }
 
@@ -229,21 +259,17 @@ export default {
     border: 1px solid rgba(0, 0, 0, 0.05);
     pointer-events: none;
   }
-  .browser-content {
-    position: relative;
-    background: #F3F5F5;
-    height: 500px;
-  }
+
   .browser-barAddress {
     background: #F1F3F4;
     padding: 8px 16px;
     border-radius: 50px;
-    font-size: 10px;
+    font: 10px 'Karla';
     color: rgba(0, 0, 0, 0.6);
     flex: 1;
   }
 
-    .browser-barAddress span { 
+    .browser-barAddress span {
       animation-name: blinker;
       animation-iteration-count: infinite;
       animation-timing-function: cubic-bezier(1,0,0,1);
@@ -257,10 +283,13 @@ export default {
       margin-left: 4px;
     }
 
-    @keyframes blinker { 
+    @keyframes blinker {
       from { opacity: 1.0; } to { opacity: 0.0; }
     }
 
+  .bookmarks-bar {
+    padding: 5px 8px;
+  }
   .bookmark {
     padding: 4px;
     font-size: 10px;
@@ -281,12 +310,10 @@ export default {
   }
 
   .template-inner {
-    margin-left: 48px;
-    width: 376px;
     display: flex;
     flex-wrap: wrap;
-    min-width: 376px;
     justify-content: space-between;
+    padding: 40px;
   }
 
   .template-innerItem {
@@ -305,7 +332,7 @@ export default {
   .template-innerItem:hover {
     cursor: pointer;
   }
-  .template-innerItem:hover:after, 
+  .template-innerItem:hover:after,
   .template-innerItem.is-dragging:after {
     content: '';
     position: absolute;
@@ -321,6 +348,9 @@ export default {
     background: #F7F9FA;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.14);
   }
+  .template-innerItem.is-inactive {
+    pointer-events: none;
+  }
   .template-innerItem.is-inactive svg {
     opacity: .2;
     filter: grayscale(1);
@@ -330,7 +360,7 @@ export default {
   }
   .template-innerItem.is-inactive:hover:after {
     display: none;
-  } 
+  }
 
 
 
@@ -344,81 +374,7 @@ export default {
   .template-innerItem:last-child {
     margin-bottom: 0;
   }
-
-  .browser-contentElement {
-    border: 2px dotted #2D51E8;
-    border-radius: 8px;
-    position: absolute;
+  .template-innerItemMedia {
+    pointer-events: none;
   }
-
-    .browser-contentElement--lateralToolbar-left {
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 52px;
-    }
-    .browser-contentElement--lateralToolbar-right {
-      position: absolute;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      width: 52px;
-    }
-    .browser-contentElement--topToolbar {
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 52px;
-      right: 0;
-    }
-    .browser-contentElement--sideBar--left {
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 100px;
-    }
-    .browser-contentElement--sideBar--right {
-      position: absolute;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      width: 100px;
-    }
-    .browser-contentElement--footer {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      height: 100px;
-      right: 0;
-    }
-    .browser-contentElement--panelTopLeft {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 80px;
-      height: 80px;
-    }
-    .browser-contentElement--panelTopRight {
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 80px;
-      height: 80px;
-    }
-    .browser-contentElement--panelBottomLeft {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 80px;
-      height: 80px;
-    }
-    .browser-contentElement--panelBottomRight {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 80px;
-      height: 80px;
-    }
 </style>

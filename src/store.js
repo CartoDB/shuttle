@@ -6,7 +6,7 @@ Vue.use(Vuex)
 
 function randomIntFromInterval(min,max)
 {
-    return Math.floor(Math.random()*(max-min+1)+min);
+  return Math.floor(Math.random()*(max-min+1)+min);
 }
 
 function randSign() {
@@ -26,6 +26,15 @@ export default new Vuex.Store({
       dataset: null,
       apiKey: null,
       oauth: null
+    },
+    layout: {
+      toolbar: {},
+      sidebars: [],
+      panels: [],
+      footer: null
+    },
+    visualization: {
+      basemap: 'voyager'
     }
   },
   mutations: {
@@ -49,19 +58,27 @@ export default new Vuex.Store({
     },
     setMapType: function (state, mapType)  {
       state.data.mapType = mapType;
-    }
-  },
-  actions: {
-    randomizeColors: function (context) {
-      const primary = chroma.random();
+    },
+
+    setPrimaryColorAndRandomize: function (state, color) {
+      const primary = chroma(color);
       const secondary = primary
         .set('hsl.l', `*${randomIntFromInterval(80, 85) / 100}`)
         .set('hsv.h', `${randSign()}${randomIntFromInterval(0, 5)}`);
       const complementary = primary.set('hsl.h', `${randSign()}135`);
-      
-      context.commit('setPrimaryColor', primary);
-      context.commit('setSecondaryColor', secondary);
-      context.commit('setComplementaryColor', complementary);
+
+      state.color.primary = primary;
+      state.color.secondary = secondary;
+      state.color.complementary = complementary;
+    },
+
+    setBasemap: function (state, basemap) {
+      state.visualization.basemap = basemap;
+    }
+  },
+  actions: {
+    randomizeColors: function (context) {
+      context.commit('setPrimaryColorAndRandomize', chroma.random().hex());
     }
   }
 })

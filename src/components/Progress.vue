@@ -1,14 +1,14 @@
 <template>
-<div class="step-wrapper">
-  <div class="step" v-for="(step, i) in steps" :key="i" @click="goTo(step)">
-    <div class="step-number" :class="{ 'step-number--active' : (i <=index ) }" >
+<ul class="step-wrapper">
+  <li class="step" :class="{ 'step-number--active' : (i <=index ) }" v-for="(step, i) in steps" :key="i" @click="goTo(step)">
+    <div class="step-number"  >
       {{ i + 1 }}
     </div>
     <div class="step-name">
       {{ step }}
     </div>
-  </div>
-</div>
+  </li>
+</ul>
 </template>
 
 <script>
@@ -31,43 +31,40 @@ export default {
     goTo: function (step) {
       this.$router.push({ name: step });
     }
-  }
+  },
+
 }
 </script>
 
 <style scoped>
 .step-wrapper {
-  display: flex;
-  justify-content: space-around;
-  padding: 24px 0;
 }
 
 .step {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   cursor: pointer;
+  margin-bottom: 20px;
+  background:rgba(0, 0, 0, 0.02);
+  padding: 10px;
+  align-items: center;
+  border: 2px solid transparent;
 }
-
+.step:last-child {
+  margin-bottom: 0;
+}
 .step-name {
-  text-transform: capitalize;
-  font-weight: bold;
-  margin-top: 12px;
+  font: 20px 'Karla';
 }
 
 .step-number {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color:#dadff8;
-  color: white;
-  border: 1px solid #dadada;
+  font:  40px 'Playfair Display';
+  margin-right: 8px;
 }
 
 .step-number--active {
-  background-color: #3254e0;
+  border: 2px solid #F2DC5D;
+}
+.step-number--fill {
+  border: 2px solid #7CB4B8;
 }
 </style>
