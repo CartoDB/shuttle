@@ -1,7 +1,9 @@
 import ejs from 'ejs';
 
+import { js, html } from 'js-beautify';
+
 // Vanilla Template Files
-import jsFile from './templates/app.template.code';
+import jsFile from './templates/app.template.js';
 import htmlFile from './templates/index.template.html';
 
 // Library Imports
@@ -25,7 +27,7 @@ export default function (data) {
   };
 
   return {
-    'src/app.js': ejs.render(jsFile, templateData),
-    'index.html': ejs.render(htmlFile, templateData)
+    'src/app.js': js(ejs.render(jsFile, templateData), { "max_preserve_newlines": 2, "preserve_newlines": true }),
+    'index.html': html(ejs.render(htmlFile, templateData), { "max_preserve_newlines": 2, "preserve_newlines": true })
   };
 }
