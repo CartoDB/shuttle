@@ -64,6 +64,7 @@ export default {
     },
     onDropZone(e) {
       const [element, ...position] = (e.target.dataset.layout || e.target.parentElement.dataset.layout).split('|');
+      e.target.style['transform'] = 'scale(1)';
 
       // HAAAAAAAAAAAX
       if (e.target.style.opacity === '0') {
