@@ -164,7 +164,7 @@ export default {
       };
 
       if (this.$store.state.layout.toolbar.position && this.$store.state.layout.toolbar.position === 'top') {
-        style['opacity'] = this.draggingElement === null ? 1 : 0.2;
+        style['opacity'] = this.draggingElement === null ? 1 : 1;
         style['backgroundColor'] = 'rgba(242, 220, 93, .8)';
       } else {
         style['opacity'] = this.draggingElement === 'topToolbar' ? 1 : 0;
@@ -201,7 +201,7 @@ export default {
 
       if (this.$store.state.layout.toolbar.position && this.$store.state.layout.toolbar.position === 'right') {
         style['opacity'] = this.draggingElement === null ? 1 : 0.2;
-        style['backgroundColor'] = 'rgba(0, 0, 0, 0.8) ';
+        style['backgroundColor'] = 'rgba(242, 220, 93, 0.8) ';
       } else {
         style['opacity'] = this.draggingElement === 'lateralToolbar' ? 1 : 0;
       }
@@ -219,7 +219,7 @@ export default {
       };
 
       if (hasLeftSidebar) {
-        style['opacity'] = this.draggingElement === null ? 1 : 0.2;
+        style['opacity'] = this.draggingElement === null ? 1 : 1;
         style['backgroundColor'] = 'rgba(255, 255, 255, 0.8) ';
       } else {
         style['opacity'] = this.draggingElement === 'sidebar' ? 1 : 0;
@@ -238,7 +238,7 @@ export default {
       };
 
       if (hasRightSidebar) {
-        style['opacity'] = this.draggingElement === null ? 1 : 0.2;
+        style['opacity'] = this.draggingElement === null ? 1 : 1;
         style['backgroundColor'] = 'rgba(255,255,255,0.8)';
       } else {
         style['opacity'] = this.draggingElement === 'sidebar' ? 1 : 0;
@@ -256,7 +256,7 @@ export default {
       };
 
       if (this.$store.state.layout.footer !== null) {
-        style['opacity'] = this.draggingElement === null ? 1 : 0.2;
+        style['opacity'] = this.draggingElement === null ? 1 : 1;
         style['backgroundColor'] = 'rgba(255,255,255,1)';
       } else {
         style['opacity'] = this.draggingElement === 'footer' ? 1 : 0;
