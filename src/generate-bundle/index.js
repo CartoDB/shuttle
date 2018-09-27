@@ -36,10 +36,24 @@ const baseData = {
     footer: {}
   },
   visualization: {
-    library: 'cartojs'
+    library: 'cartojs',
+    data: {
+      apiKey: 'default_public',
+      username: 'cartojs-test',
+      map: {
+        // bubbles, categories, choropleth, gradient, flows
+        type: 'gradient',
+        geometry: 'line',
+        basemap: 'voyager',
+        dataset: 'datasetdeprueba',
+        column: 'columnadeprueba',
+        colorRamp: 'rampadeprueba'
+      }
+    }
   }
 };
 
 // Create Vanilla scaffolding
 const fileDefinitions = Scaffoldings.vanilla(convertToTemplate(baseData));
-generateBundle(fileDefinitions);
+// generateBundle(fileDefinitions);
+console.log(fileDefinitions)

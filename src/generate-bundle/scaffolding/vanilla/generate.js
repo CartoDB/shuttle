@@ -1,7 +1,7 @@
 import ejs from 'ejs';
 
 // Vanilla Template Files
-import jsFile from './templates/app.template.js';
+import jsFile from './templates/app.template.code';
 import htmlFile from './templates/index.template.html';
 
 // Library Imports

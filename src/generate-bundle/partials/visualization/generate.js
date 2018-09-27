@@ -1,7 +1,8 @@
 import ejs from 'ejs';
 
 export default function generateLayout (visualizationData) {
-  const template = require(`./library/${visualizationData.library}.template.js`)
+  console.log(`./library/${visualizationData.library}.template.code`)
+  const template = require(`./library/${visualizationData.library}.template.code`);
 
   return {
     library: visualizationData.library,
