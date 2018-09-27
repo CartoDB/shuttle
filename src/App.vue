@@ -104,7 +104,6 @@ export default {
     flex: 1;
   }
   .header-actions {
-    height: 130px;
     background: #F2DC5D;
     padding: 40px;
     display: flex;
@@ -136,7 +135,7 @@ export default {
     font: 400 16px/1.6 'Karla';
     color: #fff;
     border: 0;
-    padding: 16px 36px;
+    padding: 8px 24px;
     text-transform: uppercase;
     cursor: pointer;
     border: 2px solid black;
