@@ -291,22 +291,22 @@ export default {
     padding: 5px 8px;
   }
   .bookmark {
-    padding: 4px;
-    font-size: 10px;
-    border-radius: 20px;
+    padding: 6px 8px;
+    font: 10px 'Karla';
+    border-radius: 12px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
   }
 
   .bookmark:hover {
-    background-color: #dedede;
+    background-color: #EDEDEE;
   }
 
   .bookmark img {
     width: 16px;
     height: 16px;
-    margin-right: 4px;
+    margin-right: 8px;
   }
 
   .template-inner {

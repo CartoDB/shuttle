@@ -51,7 +51,8 @@ export default {
       e.preventDefault();
     },
     dragenterZone(e) {
-      e.target.style['backgroundColor'] = '#FABADA';
+      /* color hover */
+      e.target.style['backgroundColor'] = '#fabada';
       e.target.style['transform'] = 'scale(.95)';
     },
     dragleaveZone(e) {
@@ -93,7 +94,7 @@ export default {
 
       if (itemSet) {
         return {
-          opacity: this.draggingElement === null ? 1 : 0.2,
+          opacity: this.draggingElement === null ? 1 : 1,
           backgroundColor: 'rgba(255, 255, 255, .8)'
         };
       }
@@ -182,7 +183,7 @@ export default {
       };
 
       if (this.$store.state.layout.toolbar.position && this.$store.state.layout.toolbar.position === 'left') {
-        style['opacity'] = this.draggingElement === null ? 1 : 0.2;
+        style['opacity'] = this.draggingElement === null ? 1 : 1;
         style['backgroundColor'] = 'rgba(242, 220, 93, .8)';
       } else {
         style['opacity'] = this.draggingElement === 'lateralToolbar' ? 1 : 0;
