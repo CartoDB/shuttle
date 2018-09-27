@@ -33,7 +33,10 @@ export default new Vuex.Store({
         mapType: null,
         username: null,
         dataset: null,
-        oauth: null
+        extent: null,
+        ramp: null,
+        column: null,
+        columns: null
       }
     }
   },
@@ -53,11 +56,23 @@ export default new Vuex.Store({
     setDataset: function (state, dataset) {
       state.visualization.data.dataset = dataset;
     },
+    setExtent: function (state, extent) {
+      state.visualization.data.extent = extent;
+    },
     setApiKey: function (state, apiKey) {
       state.visualization.data.apiKey = apiKey;
     },
     setMapType: function (state, mapType)  {
       state.visualization.data.mapType = mapType;
+    },
+    setColumn: function (state, column) {
+      state.visualization.data.column = column;
+    },
+    setRamp: function (state, ramp) {
+      state.visualization.data.ramp = ramp;
+    },
+    setColumns: function (state, columns) {
+      state.visualization.data.columns = columns;
     },
     setGeomType: function (state, geomType) {
       state.visualization.data.geomType = geomType;
@@ -81,6 +96,12 @@ export default new Vuex.Store({
   actions: {
     randomizeColors: function (context) {
       context.commit('setPrimaryColorAndRandomize', chroma.random().hex());
-    }
+    },
+    clearVisualization(context) {
+      context.commit('setGeomType', null);
+      context.commit('setMapType', null);
+      context.commit('setRamp', null);
+      context.commit('setColumn', null);
+    } 
   }
 })

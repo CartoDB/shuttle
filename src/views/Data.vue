@@ -24,7 +24,7 @@
         <div v-if="mapType !== null && columnsForMapType.length > 0">
           <label class="data-item">
             <ul class="data-itemList" style="height: 100%;">
-              <li class="data-itemListItem" v-for="column in columnsForMapType" :key="column.name">
+              <li class="data-itemListItem" v-for="column in columnsForMapType" :key="column.name" @click="setColumn(column.name)">
                 <span class="data-tag" :data-value="column.type">{{ column.type }}</span>
                 <h2>{{ column.name }}</h2> 
               </li>
@@ -34,10 +34,10 @@
         </div>
         <label class="data-item">
           <ul class="data-itemList">
-            <li class="data-itemListItem" v-for="ramp in colorRamps" :key="ramp.name">
+            <li class="data-itemListItem" v-for="ramp in colorRamps" :key="ramp.name" @click="setRamp(ramp.name)">
               <h2>{{ ramp.name }}</h2>
               <div class="ramp-color">
-                <i v-for="(color, index) in ramp.ramp" :key="index" :style="{ 'background-color': color }" />
+                <i v-for="(color, index) in ramp.ramp" :key="index" :style="{ 'background-color': color }"/>
               </div>
             </li>
           </ul>
@@ -58,25 +58,30 @@ let timeoutId = null;
 
 export default {
   name: 'Data',
-  data: function () {
-    return {
-      privateDataset: false,
-      dataset: null,
-      columns: null,
-      columnsError: false,
-      oauth: null,
-      extent: null
-    };
-  },
 
   watch: {
+    username: function (username) {
+      if (username.length === 0) {
+        this.$store.dispatch('clearVisualization');
+      }
+      timeoutId = setTimeout(function () {
+        if (username.length > 0 && (this.dataset && this.dataset.length > 0)) {
+          this.$store.dispatch('clearVisualization');
+          this.fetchGeom();
+          this.fetchRows();
+          this.fetchExtent();
+        }
+      }.bind(this), 300);
+    },
+
     dataset: function (datasetValue) {
       if (datasetValue.length === 0) {
-        this.$store.commit('setGeomType', null);
+        this.$store.dispatch('clearVisualization');
       }
       clearTimeout(timeoutId);
       timeoutId = setTimeout(function () {
-        if (datasetValue.length > 0) {
+        if (datasetValue.length > 0 && (this.username && this.username.length > 0)) {
+          this.$store.dispatch('clearVisualization');
           this.fetchGeom();
           this.fetchRows();
           this.fetchExtent();
@@ -149,6 +154,26 @@ export default {
       set (value) {
         this.$store.commit('setUsername', value);
       }
+    },
+
+    dataset: {
+      get () {
+        return this.$store.state.visualization.data.dataset;
+      },
+
+      set (value) {
+        this.$store.commit('setDataset', value);
+      }
+    },
+
+    columns: {
+      get () {
+        return this.$store.state.visualization.data.columns;
+      },
+
+      set (value) {
+        this.$store.commit('setColumns', value);
+      }
     }
   },
 
@@ -156,16 +181,30 @@ export default {
     setMapType(value) {
       this.$store.commit('setMapType', value);
     },
+    
+    setColumn(column) {
+      this.$store.commit('setColumn', column);
+    },
+    
+    setRamp(ramp) {
+      this.$store.commit('setRamp', ramp);
+    },
 
     fetchGeom: async function () {
-      this.$store.commit('setGeomType', null);
       const data = await requestQuery(`SELECT ST_GeometryType(the_geom) as geom from ${this.dataset} LIMIT 1`, this.username);
+      if (data.error) {
+        return;
+      }
       this.$store.commit('setGeomType', data.rows[0].geom);
     },
 
     fetchRows: async function () {
       this.columns = null;
       const data = await requestQuery(`SELECT * from ${this.dataset} LIMIT 0`, this.username);
+
+      if (data.error) {
+        return;
+      }
 
       const values = Object.values(data.fields);
       const keys = Object.keys(data.fields);
@@ -179,28 +218,18 @@ export default {
     fetchExtent: async function () {
       this.extent = null;
       const data = await requestQuery(`SELECT ST_Extent(the_geom) as extent FROM ${this.dataset}`, this.username);
+
+      if (data.error) {
+        return;
+      }
+
       const bounds = data.rows[0].extent;
-      this.extent = /BOX\((.+) (.+),(.+) (.+)\)/.exec(bounds)
+      this.$store.commit('setExtent', /BOX\((.+) (.+),(.+) (.+)\)/.exec(bounds)
         .splice(1, 4)
-        .map(e => parseFloat(e));
-    },
-
-    login: function () {
-      window.open(`${location.origin}/oauth.html`, '_blank', 'width=200,height=300');
+        .map(e => parseFloat(e))
+      );
     }
-  },
-
-  mounted: function () {
-    window.gotOAuthInfo = function (oauth) {
-      this.oauth = oauth;
-    }.bind(this);
   }
-
-  // computed: {
-  //   privateDataset () {
-  //     return this.$ste
-  //   }
-  // }
 }
 </script>
 
