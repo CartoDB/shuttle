@@ -30,7 +30,7 @@
                 </svg>
               </li>
             </ul>
-            <div class="browser-barAddress">http://www.airsephora.es<span></span></div>
+            <div class="browser-barAddress">http://cartodb.github.io/airsephora<span></span></div>
           </div>
           <div class="bookmarks-bar" v-if="easterEgg">
             <div class="bookmark">
@@ -256,7 +256,7 @@ export default {
     right: 0;
     bottom: 0;
     left: 0;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     pointer-events: none;
   }
 
@@ -264,7 +264,7 @@ export default {
     background: #F1F3F4;
     padding: 8px 16px;
     border-radius: 50px;
-    font: 10px 'Karla';
+    font: 12px 'Karla';
     color: rgba(0, 0, 0, 0.6);
     flex: 1;
   }

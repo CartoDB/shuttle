@@ -314,8 +314,7 @@ export default {
 }
 
 .browser-contentElement {
-  border: 2px dotted #2D51E8;
-  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.4);
   position: absolute;
   transition: opacity 0.2s linear, background-color 0.2s linear, left 0.2s linear, right 0.2s linear, top 0.2s linear, bottom 0.2s linear;
   opacity: 0;
