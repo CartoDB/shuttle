@@ -104,7 +104,7 @@ export default {
     flex: 1;
   }
   .header-actions {
-    height: 160px;
+    height: 130px;
     background: #F2DC5D;
     padding: 40px;
     display: flex;

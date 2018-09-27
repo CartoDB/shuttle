@@ -24,6 +24,6 @@ export default {
 .progressBar {
   height: 8px;
   background-color: #F2DC5D;
-  transition: width 0.2s linear;
+  transition: all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 </style>
