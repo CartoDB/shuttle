@@ -1,141 +1,143 @@
 <template>
-  <div class="container">
-    <div class="browser">
-      <div class="browser-header">
-        <span class="browser-headerPoint browser-headerPoint--red"></span>
-        <span class="browser-headerPoint browser-headerPoint--yellow"></span>
-        <span class="browser-headerPoint browser-headerPoint--green"></span>
+  <div class="inner">
+    <div class="container">
+      <div class="browser">
+        <div class="browser-header">
+          <span class="browser-headerPoint browser-headerPoint--red"></span>
+          <span class="browser-headerPoint browser-headerPoint--yellow"></span>
+          <span class="browser-headerPoint browser-headerPoint--green"></span>
+        </div>
+        <div class="browser-inner">
+          <div class="browser-bar">
+            <ul class="browser-barIcons">
+              <li class="browser-barIconsItem">
+                <svg width="8px" height="8px" viewBox="0 0 8 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <path d="M1.26544797,3.62351861 L7.25879652,3.62351861 L7.25879652,4.37648139 L1.26544797,4.37648139 L3.78796516,7.52962788 L3.2,8 L0,4 L3.2,0 L3.78796516,0.470372124 L1.26544797,3.62351861 Z" id="Combined-Shape" fill="#BABCBE" fill-rule="nonzero"></path>
+                    </g>
+                </svg>
+              </li>
+               <li class="browser-barIconsItem">
+                <svg width="8px" height="8px" viewBox="0 0 8 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <path d="M1.26544797,3.62351861 L7.25879652,3.62351861 L7.25879652,4.37648139 L1.26544797,4.37648139 L3.78796516,7.52962788 L3.2,8 L0,4 L3.2,0 L3.78796516,0.470372124 L1.26544797,3.62351861 Z" id="Combined-Shape-Copy" fill="#BABCBE" fill-rule="nonzero" transform="translate(3.629398, 4.000000) rotate(-180.000000) translate(-3.629398, -4.000000) "></path>
+                    </g>
+                </svg>
+              </li>
+            </ul>
+            <div class="browser-barAddress">http://www.airsephora.es<span></span></div>
+          </div>
+          <div class="bookmarks-bar" v-if="easterEgg">
+            <div class="bookmark">
+              <img src="https://avatars.githubusercontent.com/javisantana" />
+              <span>BBVA</span>
+            </div>
+            <div class="bookmark">
+              <img src="https://avatars.githubusercontent.com/saleiva" />
+              <span>Zara</span>
+            </div>
+            <div class="bookmark">
+              <img src="https://avatars.githubusercontent.com/miguelarias" />
+              <span>Telefónica</span>
+            </div>
+            <div class="bookmark">
+              <img :src="`https://avatars.githubusercontent.com/${hamOrButi}`" />
+              <span>7R</span>
+            </div>
+            <div class="bookmark">
+              <img src="https://avatars.githubusercontent.com/matallo" />
+              <span>Transferwise</span>
+            </div>
+          </div>
+          <div class="browser-content">
+            <div class="browser-contentElement browser-contentElement--lateralToolbar-left" data-section="lateralToolbar"></div>
+            <div class="browser-contentElement browser-contentElement--lateralToolbar-right" data-section="lateralToolbar"></div>
+            <div class="browser-contentElement browser-contentElement--topToolbar" data-section="topToolbar"></div>
+            <div class="browser-contentElement browser-contentElement--sideBar--left" data-section="sideBar"></div>
+            <div class="browser-contentElement browser-contentElement--sideBar--right" data-section="sideBar"></div>
+            <div class="browser-contentElement browser-contentElement--footer" data-section="footer"></div>
+            <div class="browser-contentElement browser-contentElement--panelTopLeft" data-section="panel"></div>
+            <div class="browser-contentElement browser-contentElement--panelTopRight" data-section="panel"></div>
+            <div class="browser-contentElement browser-contentElement--panelBottomLeft" data-section="panel"></div>
+            <div class="browser-contentElement browser-contentElement--panelBottomRight" data-section="panel"></div>
+          </div>
+        </div>
       </div>
-      <div class="browser-inner">
-        <div class="browser-bar">
-          <ul class="browser-barIcons">
-            <li class="browser-barIconsItem">
-              <svg width="8px" height="8px" viewBox="0 0 8 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                      <path d="M1.26544797,3.62351861 L7.25879652,3.62351861 L7.25879652,4.37648139 L1.26544797,4.37648139 L3.78796516,7.52962788 L3.2,8 L0,4 L3.2,0 L3.78796516,0.470372124 L1.26544797,3.62351861 Z" id="Combined-Shape" fill="#BABCBE" fill-rule="nonzero"></path>
-                  </g>
+
+
+      <ul class="template-inner">
+        <li class="template-innerItem">
+          <div class="template-innerItemMedia">
+            <svg width="24px" height="74px" viewBox="0 0 24 74" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <rect id="Rectangle-Copy-2" fill="#2D51E7" x="0" y="0" width="24" height="74" rx="4"></rect>
+              <rect id="Rectangle-4" fill="#5675ED" x="8" y="57" width="9" height="9"></rect>
+            </svg>
+          </div>
+          <p>Lateral Toolbar</p>
+        </li>
+        <li class="template-innerItem is-inactive">
+          <div class="template-innerItemMedia">
+            <svg width="89px" height="17px" viewBox="0 0 89 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <rect id="Rectangle-Copy-3" fill="#2D51E7" x="0" y="0" width="89" height="17" rx="4"></rect>
+              <rect id="Rectangle-4-Copy" fill="#5675ED" x="6" y="4" width="9" height="9"></rect>
+            </svg>
+          </div>
+          <p>Top Toolbar</p>
+        </li>
+        <li class="template-innerItem">
+          <div class="template-innerItemMedia">
+              <svg width="75px" height="76px" viewBox="0 0 75 76" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <rect id="Rectangle" fill="#2D51E7" x="0" y="0" width="75" height="76" rx="4"></rect>
+                <rect id="Rectangle-2" fill="#5874ED" x="7" y="10" width="57" height="4"></rect>
+                <rect id="Rectangle-2-Copy" fill="#5874ED" x="7" y="19" width="30" height="14"></rect>
+                <rect id="Rectangle-2-Copy-2" fill="#5874ED" x="7" y="37" width="30" height="3"></rect>
+                <rect id="Rectangle-2-Copy-3" fill="#5874ED" x="7" y="46" width="40" height="3"></rect>
+                <rect id="Rectangle-2-Copy-4" fill="#5874ED" x="7" y="55" width="60" height="3"></rect>
+                <rect id="Rectangle-2-Copy-5" fill="#5874ED" x="7" y="64" width="40" height="3"></rect>
               </svg>
-            </li>
-             <li class="browser-barIconsItem">
-              <svg width="8px" height="8px" viewBox="0 0 8 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                      <path d="M1.26544797,3.62351861 L7.25879652,3.62351861 L7.25879652,4.37648139 L1.26544797,4.37648139 L3.78796516,7.52962788 L3.2,8 L0,4 L3.2,0 L3.78796516,0.470372124 L1.26544797,3.62351861 Z" id="Combined-Shape-Copy" fill="#BABCBE" fill-rule="nonzero" transform="translate(3.629398, 4.000000) rotate(-180.000000) translate(-3.629398, -4.000000) "></path>
-                  </g>
+          </div>
+          <p>Sidebar</p>
+        </li>
+        <li class="template-innerItem">
+          <div class="template-innerItemMedia">
+              <svg width="125px" height="54px" viewBox="0 0 125 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <rect id="Rectangle-Copy" fill="#2D51E7" x="0" y="0" width="125" height="54" rx="4"></rect>
+                          <rect id="Rectangle-2-Copy-6" fill="#5874ED" x="9" y="11" width="44" height="4"></rect>
+                          <rect id="Rectangle-3" fill="#5675ED" x="10" y="26" width="8" height="18"></rect>
+                          <rect id="Rectangle-3-Copy-5" fill="#5675ED" x="60" y="26" width="8" height="18"></rect>
+                          <rect id="Rectangle-3-Copy" fill="#5675ED" x="20" y="34" width="8" height="10"></rect>
+                          <rect id="Rectangle-3-Copy-6" fill="#5675ED" x="70" y="34" width="8" height="10"></rect>
+                          <rect id="Rectangle-3-Copy-2" fill="#5675ED" x="30" y="29" width="8" height="15"></rect>
+                          <rect id="Rectangle-3-Copy-7" fill="#5675ED" x="80" y="29" width="8" height="15"></rect>
+                          <rect id="Rectangle-3-Copy-3" fill="#5675ED" x="50" y="38" width="8" height="6"></rect>
+                          <rect id="Rectangle-3-Copy-8" fill="#5675ED" x="100" y="38" width="8" height="6"></rect>
+                          <rect id="Rectangle-3-Copy-4" fill="#5675ED" x="40" y="24" width="8" height="20"></rect>
+                          <rect id="Rectangle-3-Copy-9" fill="#5675ED" x="90" y="24" width="8" height="20"></rect>
               </svg>
-            </li>
-          </ul>
-          <div class="browser-barAddress">http://www.airsephora.es<span></span></div>
-        </div>
-        <div class="bookmarks-bar" v-if="easterEgg">
-          <div class="bookmark">
-            <img src="https://avatars.githubusercontent.com/javisantana" />
-            <span>BBVA</span>
+
           </div>
-          <div class="bookmark">
-            <img src="https://avatars.githubusercontent.com/saleiva" />
-            <span>Zara</span>
+          <p>Footer</p>
+        </li>
+        <li class="template-innerItem">
+          <div class="template-innerItemMedia">
+            <svg width="75px" height="54px" viewBox="0 0 75 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <rect id="Rectangle" fill="#2D51E7" x="0" y="0" width="75" height="54" rx="4"></rect>
+                <rect id="Rectangle-2" fill="#5874ED" x="7" y="10" width="4" height="4"></rect>
+                <rect id="Rectangle-2-Copy-6" fill="#5874ED" x="17" y="10" width="24" height="4"></rect>
+                <rect id="Rectangle-2-Copy" fill="#5874ED" x="7" y="20" width="4" height="4"></rect>
+                <rect id="Rectangle-2-Copy-7" fill="#5874ED" x="17" y="20" width="44" height="4"></rect>
+                <rect id="Rectangle-2-Copy-2" fill="#5874ED" x="7" y="30" width="4" height="4"></rect>
+                <rect id="Rectangle-2-Copy-8" fill="#5874ED" x="17" y="30" width="38" height="4"></rect>
+                <rect id="Rectangle-2-Copy-3" fill="#5874ED" x="7" y="40" width="4" height="4"></rect>
+                <rect id="Rectangle-2-Copy-9" fill="#5874ED" x="17" y="40" width="10" height="4"></rect>
+            </svg>
           </div>
-          <div class="bookmark">
-            <img src="https://avatars.githubusercontent.com/miguelarias" />
-            <span>Telefónica</span>
-          </div>
-          <div class="bookmark">
-            <img :src="`https://avatars.githubusercontent.com/${hamOrButi}`" />
-            <span>7R</span>
-          </div>
-          <div class="bookmark">
-            <img src="https://avatars.githubusercontent.com/matallo" />
-            <span>Transferwise</span>
-          </div>
-        </div>
-        <div class="browser-content">
-          <div class="browser-contentElement browser-contentElement--lateralToolbar-left" data-section="lateralToolbar"></div>
-          <div class="browser-contentElement browser-contentElement--lateralToolbar-right" data-section="lateralToolbar"></div>
-          <div class="browser-contentElement browser-contentElement--topToolbar" data-section="topToolbar"></div>
-          <div class="browser-contentElement browser-contentElement--sideBar--left" data-section="sideBar"></div>
-          <div class="browser-contentElement browser-contentElement--sideBar--right" data-section="sideBar"></div>
-          <div class="browser-contentElement browser-contentElement--footer" data-section="footer"></div>
-          <div class="browser-contentElement browser-contentElement--panelTopLeft" data-section="panel"></div>
-          <div class="browser-contentElement browser-contentElement--panelTopRight" data-section="panel"></div>
-          <div class="browser-contentElement browser-contentElement--panelBottomLeft" data-section="panel"></div>
-          <div class="browser-contentElement browser-contentElement--panelBottomRight" data-section="panel"></div>
-        </div>
-      </div>
+          <p>Panels</p>
+        </li>
+      </ul>
+
     </div>
-
-
-    <ul class="template-inner">
-      <li class="template-innerItem">
-        <div class="template-innerItemMedia">
-          <svg width="24px" height="74px" viewBox="0 0 24 74" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <rect id="Rectangle-Copy-2" fill="#2D51E7" x="0" y="0" width="24" height="74" rx="4"></rect>
-            <rect id="Rectangle-4" fill="#5675ED" x="8" y="57" width="9" height="9"></rect>
-          </svg>
-        </div>
-        <p>Lateral Toolbar</p>
-      </li>
-      <li class="template-innerItem is-inactive">
-        <div class="template-innerItemMedia">
-          <svg width="89px" height="17px" viewBox="0 0 89 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <rect id="Rectangle-Copy-3" fill="#2D51E7" x="0" y="0" width="89" height="17" rx="4"></rect>
-            <rect id="Rectangle-4-Copy" fill="#5675ED" x="6" y="4" width="9" height="9"></rect>
-          </svg>
-        </div>
-        <p>Top Toolbar</p>
-      </li>
-      <li class="template-innerItem">
-        <div class="template-innerItemMedia">
-            <svg width="75px" height="76px" viewBox="0 0 75 76" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-              <rect id="Rectangle" fill="#2D51E7" x="0" y="0" width="75" height="76" rx="4"></rect>
-              <rect id="Rectangle-2" fill="#5874ED" x="7" y="10" width="57" height="4"></rect>
-              <rect id="Rectangle-2-Copy" fill="#5874ED" x="7" y="19" width="30" height="14"></rect>
-              <rect id="Rectangle-2-Copy-2" fill="#5874ED" x="7" y="37" width="30" height="3"></rect>
-              <rect id="Rectangle-2-Copy-3" fill="#5874ED" x="7" y="46" width="40" height="3"></rect>
-              <rect id="Rectangle-2-Copy-4" fill="#5874ED" x="7" y="55" width="60" height="3"></rect>
-              <rect id="Rectangle-2-Copy-5" fill="#5874ED" x="7" y="64" width="40" height="3"></rect>
-            </svg>
-        </div>
-        <p>Sidebar</p>
-      </li>
-      <li class="template-innerItem">
-        <div class="template-innerItemMedia">
-            <svg width="125px" height="54px" viewBox="0 0 125 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <rect id="Rectangle-Copy" fill="#2D51E7" x="0" y="0" width="125" height="54" rx="4"></rect>
-                        <rect id="Rectangle-2-Copy-6" fill="#5874ED" x="9" y="11" width="44" height="4"></rect>
-                        <rect id="Rectangle-3" fill="#5675ED" x="10" y="26" width="8" height="18"></rect>
-                        <rect id="Rectangle-3-Copy-5" fill="#5675ED" x="60" y="26" width="8" height="18"></rect>
-                        <rect id="Rectangle-3-Copy" fill="#5675ED" x="20" y="34" width="8" height="10"></rect>
-                        <rect id="Rectangle-3-Copy-6" fill="#5675ED" x="70" y="34" width="8" height="10"></rect>
-                        <rect id="Rectangle-3-Copy-2" fill="#5675ED" x="30" y="29" width="8" height="15"></rect>
-                        <rect id="Rectangle-3-Copy-7" fill="#5675ED" x="80" y="29" width="8" height="15"></rect>
-                        <rect id="Rectangle-3-Copy-3" fill="#5675ED" x="50" y="38" width="8" height="6"></rect>
-                        <rect id="Rectangle-3-Copy-8" fill="#5675ED" x="100" y="38" width="8" height="6"></rect>
-                        <rect id="Rectangle-3-Copy-4" fill="#5675ED" x="40" y="24" width="8" height="20"></rect>
-                        <rect id="Rectangle-3-Copy-9" fill="#5675ED" x="90" y="24" width="8" height="20"></rect>
-            </svg>
-
-        </div>
-        <p>Footer</p>
-      </li>
-      <li class="template-innerItem">
-        <div class="template-innerItemMedia">
-          <svg width="75px" height="54px" viewBox="0 0 75 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-              <rect id="Rectangle" fill="#2D51E7" x="0" y="0" width="75" height="54" rx="4"></rect>
-              <rect id="Rectangle-2" fill="#5874ED" x="7" y="10" width="4" height="4"></rect>
-              <rect id="Rectangle-2-Copy-6" fill="#5874ED" x="17" y="10" width="24" height="4"></rect>
-              <rect id="Rectangle-2-Copy" fill="#5874ED" x="7" y="20" width="4" height="4"></rect>
-              <rect id="Rectangle-2-Copy-7" fill="#5874ED" x="17" y="20" width="44" height="4"></rect>
-              <rect id="Rectangle-2-Copy-2" fill="#5874ED" x="7" y="30" width="4" height="4"></rect>
-              <rect id="Rectangle-2-Copy-8" fill="#5874ED" x="17" y="30" width="38" height="4"></rect>
-              <rect id="Rectangle-2-Copy-3" fill="#5874ED" x="7" y="40" width="4" height="4"></rect>
-              <rect id="Rectangle-2-Copy-9" fill="#5874ED" x="17" y="40" width="10" height="4"></rect>
-          </svg>
-        </div>
-        <p>Panels</p>
-      </li>
-    </ul>
-
-  </div>
+  </div>    
 </template>
 
 <script>
@@ -261,6 +263,9 @@ export default {
       from { opacity: 1.0; } to { opacity: 0.0; }
     }
 
+  .bookmarks-bar {
+    padding: 5px 8px;
+  }
   .bookmark {
     padding: 4px;
     font-size: 10px;

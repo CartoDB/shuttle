@@ -1,8 +1,27 @@
 <template>
   <div id="app">
-    <ProgressBar :progress="progress" />
-    <div class="help">{{ helpForStep }}</div>
-    <Progress :index="routeIndex" />
+    <aside class="header" v-if="!onHome">
+      <div class="header-progress">
+        <ProgressBar :progress="progress"  />
+        <div class="header-progressInner">
+          <h1 class="header-progressTitle">Airsephora</h1>
+          <p class="header-progresshelp">{{ helpForStep }}</p>
+          <Progress :index="routeIndex" />
+        </div>
+      </div>
+      <ul class="header-actions">
+        <li>
+          <button class="header-button is-prev">
+            Anterior
+          </button>
+        </li>
+        <li>
+          <button class="header-button">
+            Next
+          </button>
+        </li>
+      </ul>
+    </aside>
     <div class="main-view">
       <router-view />
     </div>
@@ -25,6 +44,10 @@ export default {
       return steps.indexOf(this.$route.name);
     },
 
+    onHome: function () {
+      return this.$route.name === 'home';
+    },
+
     progress: function () {
       return Math.floor(((this.routeIndex + 1) / steps.length) * 100);
     },
@@ -32,13 +55,13 @@ export default {
     helpForStep: function () {
       switch (this.$route.name) {
         case 'colors':
-          return 'Press the spacebar to switch colors';
+          return 'Press the spacebar to switch colors or create your own color ramp';
         case 'layout':
-          return 'Pick a layout';
+          return 'Drag and drop the components to create your own Airship layout';
         case 'data':
           return 'Configure what data to show';
         case 'tech':
-          return 'Vector? Raster?';
+          return 'You can choose between CARTOjs or CARTO VL';
         default:
           return null;
       }
@@ -60,10 +83,75 @@ export default {
 #app {
   height: 100vh;
   display: flex;
-  flex-direction: column;
 }
 
+.header {
+  flex: 0 0 40%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+  .header:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 1px;
+    background: rgba(0, 0, 0, 0.1);
+  }
+  .header-progress {
+    flex: 1;
+  }
+  .header-actions {
+    height: 160px;
+    background: #F2DC5D;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-progressInner {
+    padding: 40px;
+  }
+  .header-progressTitle {
+    font: 700 60px 'Playfair Display';
+    margin-bottom: 20px;
+  }
+  .header-progresshelp {
+    font: 400 16px/1.6 'Karla';
+    margin-bottom: 40px;
+  }
 .main-view {
   flex: 1;
+}
+  .main-view .inner {
+    background: rgba(0, 0, 0, 0.02);
+    height: 100vh;
+  }
+.header-button {
+    -webkit-appearance: none;
+    appearance: none;
+    background: black;
+    font: 400 16px/1.6 'Karla';
+    color: #fff;
+    border: 0;
+    padding: 16px 36px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 2px solid black;
+}
+.header-button:hover {
+    border: 2px solid black;
+    background: transparent;
+    color: #000;
+    outline: none;
+    cursor: pointer;
+}
+.header-button.is-prev {
+  background: none;
+  color: #000;
+  border: 2px solid transparent;
+  padding-left: 0;
 }
 </style>

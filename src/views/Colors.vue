@@ -1,4 +1,8 @@
 <template>
+
+
+
+
   <div class="color-wrapper">
     <div :style="{ 'background-color': primaryColor }" class="colorBar">
       <span class="color-label color-type">Primary</span>
@@ -73,7 +77,7 @@ export default {
 .color-wrapper {
   display: flex;
   height: 100%;
-  position: relative;
+  flex-direction: column;
 }
 
 .color-label {
