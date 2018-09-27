@@ -9,7 +9,6 @@ import generateMapFooter from './map-footer/generate';
 import layout from './layout.template.html';
 
 export default function generateLayout (layoutData) {
-  console.log('layoutData', layoutData);
   const toolbar = layoutData.toolbar ? generateToolbar(layoutData.toolbar) : '';
   const sidebars = layoutData.sidebars.map(generateSidebar);
   const map = generateMap(layoutData.map);
