@@ -20,13 +20,6 @@ export default new Vuex.Store({
       secondary: '#D7E8BA',
       complementary: '#2E5077'
     },
-    data: {
-      mapType: null,
-      username: null,
-      dataset: null,
-      apiKey: null,
-      oauth: null
-    },
     layout: {
       toolbar: {},
       sidebars: [],
@@ -34,7 +27,14 @@ export default new Vuex.Store({
       footer: null
     },
     visualization: {
-      basemap: 'voyager'
+      basemap: 'voyager',
+      data: {
+        geomType: null,
+        mapType: null,
+        username: null,
+        dataset: null,
+        oauth: null
+      }
     }
   },
   mutations: {
@@ -48,18 +48,20 @@ export default new Vuex.Store({
       state.color.complementary = color;
     },
     setUsername: function (state, username) {
-      state.data.username = username;
+      state.visualization.data.username = username;
     },
     setDataset: function (state, dataset) {
-      state.data.dataset = dataset;
+      state.visualization.data.dataset = dataset;
     },
     setApiKey: function (state, apiKey) {
-      state.data.apiKey = apiKey;
+      state.visualization.data.apiKey = apiKey;
     },
     setMapType: function (state, mapType)  {
-      state.data.mapType = mapType;
+      state.visualization.data.mapType = mapType;
     },
-
+    setGeomType: function (state, geomType) {
+      state.visualization.data.geomType = geomType;
+    },
     setPrimaryColorAndRandomize: function (state, color) {
       const primary = chroma(color);
       const secondary = primary
