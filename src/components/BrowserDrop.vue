@@ -51,7 +51,7 @@ export default {
       e.preventDefault();
     },
     dragenterZone(e) {
-      e.target.style['backgroundColor'] = '#2D51E8';
+      e.target.style['backgroundColor'] = '#FABADA';
     },
     dragleaveZone(e) {
       const [element, ...position] = e.target.dataset.layout.split('|');
@@ -92,7 +92,7 @@ export default {
       if (itemSet) {
         return {
           opacity: this.draggingElement === null ? 1 : 0.2,
-          backgroundColor: '#2D51E8'
+          backgroundColor: 'rgba(255, 255, 255, .8)'
         };
       }
 
@@ -163,7 +163,7 @@ export default {
 
       if (this.$store.state.layout.toolbar.position && this.$store.state.layout.toolbar.position === 'top') {
         style['opacity'] = this.draggingElement === null ? 1 : 0.2;
-        style['backgroundColor'] = '#2D51E8';
+        style['backgroundColor'] = 'rgba(242, 220, 93, .8)';
       } else {
         style['opacity'] = this.draggingElement === 'topToolbar' ? 1 : 0;
       }
@@ -181,7 +181,7 @@ export default {
 
       if (this.$store.state.layout.toolbar.position && this.$store.state.layout.toolbar.position === 'left') {
         style['opacity'] = this.draggingElement === null ? 1 : 0.2;
-        style['backgroundColor'] = '#2D51E8';
+        style['backgroundColor'] = 'rgba(242, 220, 93, .8)';
       } else {
         style['opacity'] = this.draggingElement === 'lateralToolbar' ? 1 : 0;
       }
@@ -199,7 +199,7 @@ export default {
 
       if (this.$store.state.layout.toolbar.position && this.$store.state.layout.toolbar.position === 'right') {
         style['opacity'] = this.draggingElement === null ? 1 : 0.2;
-        style['backgroundColor'] = '#2D51E8';
+        style['backgroundColor'] = 'rgba(0, 0, 0, 0.8) ';
       } else {
         style['opacity'] = this.draggingElement === 'lateralToolbar' ? 1 : 0;
       }
@@ -218,7 +218,7 @@ export default {
 
       if (hasLeftSidebar) {
         style['opacity'] = this.draggingElement === null ? 1 : 0.2;
-        style['backgroundColor'] = '#2D51E8';
+        style['backgroundColor'] = 'rgba(255, 255, 255, 0.8) ';
       } else {
         style['opacity'] = this.draggingElement === 'sidebar' ? 1 : 0;
       }
@@ -237,7 +237,7 @@ export default {
 
       if (hasRightSidebar) {
         style['opacity'] = this.draggingElement === null ? 1 : 0.2;
-        style['backgroundColor'] = '#2D51E8';
+        style['backgroundColor'] = 'rgba(255,255,255,0.8)';
       } else {
         style['opacity'] = this.draggingElement === 'sidebar' ? 1 : 0;
       }
@@ -255,7 +255,7 @@ export default {
 
       if (this.$store.state.layout.footer !== null) {
         style['opacity'] = this.draggingElement === null ? 1 : 0.2;
-        style['backgroundColor'] = '#2D51E8';
+        style['backgroundColor'] = 'rgba(255,255,255,1)';
       } else {
         style['opacity'] = this.draggingElement === 'footer' ? 1 : 0;
       }
@@ -314,7 +314,7 @@ export default {
 }
 
 .browser-contentElement {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.2);
   position: absolute;
   transition: opacity 0.2s linear, background-color 0.2s linear, left 0.2s linear, right 0.2s linear, top 0.2s linear, bottom 0.2s linear;
   opacity: 0;
@@ -392,7 +392,7 @@ export default {
     }
 
     .browser-contentElement:hover::after {
-      content: 'X';
+      content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAATCAYAAACdkl3yAAAAAXNSR0IArs4c6QAAAIdJREFUOBFjZMAN/uOQYsQmzoRNkBwxkOm4bCbJPKq5iCRb8SlGDjhyvQg2g2peY8HiXGRXYpGGC6H4gGouwmcQyEZkW9H5cKeBGPgMQlFIiDNqEKEQYmDAlo5gutDTEzofpg5M0ySwn0CtgKUXQjRIOUwPVCuE8gRSj4GYkAEweZBakB4wAAAQlyAt9W5bLQAAAABJRU5ErkJggg==');
       position: absolute;
       left: 50%;
       top: 50%;
