@@ -1,5 +1,5 @@
 <template>
-  <div class="browser-content" @dragenter="dragenter" @dragover="dragover">
+  <div :style="{ 'background-image': `url(${basemap})` }" class="browser-content" @dragenter="dragenter" @dragover="dragover">
     <div @click="removeLayout" data-layout="toolbar|top" @drop="onDropZone" @dragenter="dragenterZone" @dragleave="dragleaveZone" :style="topToolbarStyle" class="browser-contentElement"></div>
     <div @click="removeLayout" data-layout="toolbar|left" @drop="onDropZone" @dragenter="dragenterZone" @dragleave="dragleaveZone" :style="leftToolbarStyle" class="browser-contentElement"></div>
     <div @click="removeLayout" data-layout="toolbar|right" @drop="onDropZone" @dragenter="dragenterZone" @dragleave="dragleaveZone" :style="rightToolbarStyle" class="browser-contentElement"></div>
@@ -23,19 +23,12 @@ const FOOTER_SIZE = 100;
 export default {
   name: 'BrowserDrop',
   props: {
-    draggingElement: String
-  },
-  data: () => {
-    return {
-      toolbar: {},
-      sidebars: [],
-      panels: [],
-      footer: null
-    }
+    draggingElement: String,
+    basemap: String
   },
   methods: {
     isSelected(element, position) {
-      const layoutElement = this[element];
+      const layoutElement = this.$store.state.layout[element];
 
       if (Array.isArray(layoutElement)) {
         if (element === 'panels') {
@@ -76,7 +69,7 @@ export default {
         return;
       }
 
-      const elementObject = this[element];
+      const elementObject = this.$store.state.layout[element];
 
       if (Array.isArray(elementObject)) {
         if (element === 'panels') {
@@ -88,13 +81,13 @@ export default {
         return;
       }
 
-      this[element] = { position: position[0] };
+      this.$store.state.layout[element] = { position: position[0] };
     },
     drop(event) {
       console.log({ event }, arguments);
     },
     styleForPanel (h, v) {
-      const itemSet = this.panels.some(panel => panel.horizontalPosition === h && panel.verticalPosition === v);
+      const itemSet = this.$store.state.layout.panels.some(panel => panel.horizontalPosition === h && panel.verticalPosition === v);
 
       if (itemSet) {
         return {
@@ -112,22 +105,22 @@ export default {
 
       let hOffset = 0;
 
-      if (this.toolbar.position === h || this.draggingElement === 'lateralToolbar') {
+      if (this.$store.state.layout.toolbar.position === h || this.draggingElement === 'lateralToolbar') {
         hOffset += TOOLBAR_SIZE;
       }
 
-      const hasSidebarLeft = this.sidebars.some(sidebar => sidebar.position === h);
+      const hasSidebarLeft = this.$store.state.layout.sidebars.some(sidebar => sidebar.position === h);
       if (hasSidebarLeft || this.draggingElement === 'sidebar') {
         hOffset += SIDEBAR_SIZE;
       }
 
       let vOffset = 0;
 
-      if ((v === 'top' && this.toolbar.position === 'top') || (v === 'top' && this.draggingElement === 'topToolbar')) {
+      if ((v === 'top' && this.$store.state.layout.toolbar.position === 'top') || (v === 'top' && this.draggingElement === 'topToolbar')) {
         vOffset += TOOLBAR_SIZE;
       }
 
-      if ((v === 'bottom' && this.footer) || (v === 'bottom' && this.draggingElement === 'footer')) {
+      if ((v === 'bottom' && this.$store.state.layout.footer) || (v === 'bottom' && this.draggingElement === 'footer')) {
         vOffset += FOOTER_SIZE;
       }
 
@@ -143,22 +136,22 @@ export default {
       const [element, ...position] = e.target.dataset.layout.split('|');
 
       if (element === 'footer') {
-        this.footer = null;
+        this.$store.state.layout.footer = null;
         return;
       }
 
       if (element === 'panels') {
-        this.panels = this.panels.filter(panel => !(panel.verticalPosition === position[0] && panel.horizontalPosition === position[1]))
+        this.$store.state.layout.panels = this.$store.state.layout.panels.filter(panel => !(panel.verticalPosition === position[0] && panel.horizontalPosition === position[1]))
         return;
       }
 
       if (element === 'sidebars') {
-        this.sidebars = this.sidebars.filter(sidebar => !(sidebar.position === position[0]));
+        this.$store.state.layout.sidebars = this.$store.state.layout.sidebars.filter(sidebar => !(sidebar.position === position[0]));
         return;
       }
 
-      if (position[0] === this.toolbar.position) {
-        this.toolbar = {};
+      if (position[0] === this.$store.state.layout.toolbar.position) {
+        this.$store.state.layout.toolbar = {};
       }
 
     }
@@ -168,7 +161,7 @@ export default {
       const style = {
       };
 
-      if (this.toolbar.position && this.toolbar.position === 'top') {
+      if (this.$store.state.layout.toolbar.position && this.$store.state.layout.toolbar.position === 'top') {
         style['opacity'] = this.draggingElement === null ? 1 : 0.2;
         style['backgroundColor'] = '#2D51E8';
       } else {
@@ -186,7 +179,7 @@ export default {
       const style = {
       };
 
-      if (this.toolbar.position && this.toolbar.position === 'left') {
+      if (this.$store.state.layout.toolbar.position && this.$store.state.layout.toolbar.position === 'left') {
         style['opacity'] = this.draggingElement === null ? 1 : 0.2;
         style['backgroundColor'] = '#2D51E8';
       } else {
@@ -204,7 +197,7 @@ export default {
       const style = {
       };
 
-      if (this.toolbar.position && this.toolbar.position === 'right') {
+      if (this.$store.state.layout.toolbar.position && this.$store.state.layout.toolbar.position === 'right') {
         style['opacity'] = this.draggingElement === null ? 1 : 0.2;
         style['backgroundColor'] = '#2D51E8';
       } else {
@@ -219,7 +212,7 @@ export default {
       return style;
     },
     leftSidebarStyle() {
-      const hasLeftSidebar = this.sidebars.some(sidebar => sidebar.position === 'left');
+      const hasLeftSidebar = this.$store.state.layout.sidebars.some(sidebar => sidebar.position === 'left');
       const style = {
       };
 
@@ -230,15 +223,15 @@ export default {
         style['opacity'] = this.draggingElement === 'sidebar' ? 1 : 0;
       }
 
-      style['top'] = (this.toolbar.position === 'top' || this.draggingElement === 'topToolbar') ? `${TOOLBAR_SIZE}px` : 0;
-      style['left'] = (this.toolbar.position === 'left'  || this.draggingElement === 'lateralToolbar') ? `${TOOLBAR_SIZE}px` : 0;
+      style['top'] = (this.$store.state.layout.toolbar.position === 'top' || this.draggingElement === 'topToolbar') ? `${TOOLBAR_SIZE}px` : 0;
+      style['left'] = (this.$store.state.layout.toolbar.position === 'left'  || this.draggingElement === 'lateralToolbar') ? `${TOOLBAR_SIZE}px` : 0;
       style['bottom'] = 0;
       style['width'] = `${SIDEBAR_SIZE}px`;
 
       return style;
     },
     rightSidebarStyle() {
-      const hasRightSidebar = this.sidebars.some(sidebar => sidebar.position === 'right');
+      const hasRightSidebar = this.$store.state.layout.sidebars.some(sidebar => sidebar.position === 'right');
       const style = {
       };
 
@@ -249,8 +242,8 @@ export default {
         style['opacity'] = this.draggingElement === 'sidebar' ? 1 : 0;
       }
 
-      style['top'] = (this.toolbar.position === 'top' || this.draggingElement === 'topToolbar') ? `${TOOLBAR_SIZE}px` : 0;
-      style['right'] = (this.toolbar.position === 'right' || this.draggingElement === 'lateralToolbar') ? `${TOOLBAR_SIZE}px` : 0;
+      style['top'] = (this.$store.state.layout.toolbar.position === 'top' || this.draggingElement === 'topToolbar') ? `${TOOLBAR_SIZE}px` : 0;
+      style['right'] = (this.$store.state.layout.toolbar.position === 'right' || this.draggingElement === 'lateralToolbar') ? `${TOOLBAR_SIZE}px` : 0;
       style['bottom'] = 0;
       style['width'] = `${SIDEBAR_SIZE}px`;
 
@@ -260,7 +253,7 @@ export default {
       const style = {
       };
 
-      if (this.footer !== null) {
+      if (this.$store.state.layout.footer !== null) {
         style['opacity'] = this.draggingElement === null ? 1 : 0.2;
         style['backgroundColor'] = '#2D51E8';
       } else {
@@ -269,21 +262,21 @@ export default {
 
       let leftOffset = 0;
 
-      if (this.toolbar.position === 'left' || this.draggingElement === 'lateralToolbar') {
+      if (this.$store.state.layout.toolbar.position === 'left' || this.draggingElement === 'lateralToolbar') {
         leftOffset += TOOLBAR_SIZE;
       }
 
-      const hasSidebarLeft = this.sidebars.some(sidebar => sidebar.position === 'left');
+      const hasSidebarLeft = this.$store.state.layout.sidebars.some(sidebar => sidebar.position === 'left');
       if (hasSidebarLeft || this.draggingElement === 'sidebar') {
         leftOffset += SIDEBAR_SIZE;
       }
 
       let rightOffset = 0;
-      if (this.toolbar.position === 'right' || this.draggingElement === 'lateralToolbar') {
+      if (this.$store.state.layout.toolbar.position === 'right' || this.$store.state.layout.draggingElement === 'lateralToolbar') {
         rightOffset += TOOLBAR_SIZE;
       }
 
-      const hasSidebarRight = this.sidebars.some(sidebar => sidebar.position === 'right');
+      const hasSidebarRight = this.$store.state.layout.sidebars.some(sidebar => sidebar.position === 'right');
       if (hasSidebarRight || this.draggingElement === 'sidebar') {
         rightOffset += SIDEBAR_SIZE;
       }
@@ -317,6 +310,7 @@ export default {
   position: relative;
   background: #F3F5F5;
   height: 500px;
+  background-size: cover;
 }
 
 .browser-contentElement {

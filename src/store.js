@@ -19,6 +19,15 @@ export default new Vuex.Store({
       primary: '#FFA630',
       secondary: '#D7E8BA',
       complementary: '#2E5077'
+    },
+    layout: {
+      toolbar: {},
+      sidebars: [],
+      panels: [],
+      footer: null
+    },
+    visualization: {
+      basemap: 'voyager'
     }
   },
   mutations: {
@@ -30,6 +39,9 @@ export default new Vuex.Store({
     },
     setComplementaryColor: function (state, color) {
       state.color.complementary = color;
+    },
+    setBasemap: function (state, basemap) {
+      state.visualization.basemap = basemap;
     }
   },
   actions: {
@@ -39,7 +51,7 @@ export default new Vuex.Store({
         .set('hsl.l', `*${randomIntFromInterval(80, 85) / 100}`)
         .set('hsv.h', `${randSign()}${randomIntFromInterval(0, 5)}`);
       const complementary = primary.set('hsl.h', `${randSign()}135`);
-      
+
       context.commit('setPrimaryColor', primary);
       context.commit('setSecondaryColor', secondary);
       context.commit('setComplementaryColor', complementary);
