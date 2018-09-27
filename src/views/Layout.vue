@@ -169,15 +169,12 @@ export default {
 
 <style scoped>
   .container {
-    max-width: 1220px;
-    width: 100%;
-    margin: 0 auto;
     display: flex;
     align-items: flex-start;
+    flex-direction: column;
   }
 
   .browser {
-    max-width: 880px;
     width: 100%;
   }
 
@@ -237,7 +234,7 @@ export default {
     background: #F1F3F4;
     padding: 8px 16px;
     border-radius: 50px;
-    font-size: 10px;
+    font: 10px 'Karla';
     color: rgba(0, 0, 0, 0.6);
     flex: 1;
   }
@@ -283,12 +280,10 @@ export default {
   }
 
   .template-inner {
-    margin-left: 48px;
-    width: 376px;
     display: flex;
     flex-wrap: wrap;
-    min-width: 376px;
     justify-content: space-between;
+    padding: 40px;
   }
 
   .template-innerItem {
