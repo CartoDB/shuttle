@@ -16,8 +16,8 @@ const TECH = 'tech';
 export const steps = [
   COLORS,
   LAYOUT,
-  DATA,
-  TECH
+  TECH,
+  DATA
 ];
 
 export default new Router({
