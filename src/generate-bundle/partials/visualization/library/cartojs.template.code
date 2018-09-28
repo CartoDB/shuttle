@@ -12,15 +12,15 @@ const client = new carto.Client({
   username: '<%- data.username -%>'
 });
 
-<% if (data.map.type === 'choropleth') { %>
-  const source = new carto.source.SQL('SELECT *, ST_Area(the_geom) as pol_area FROM <%- data.map.dataset -%>');
-<% } else { %>
-  const source = new carto.source.Dataset('<%- data.map.dataset -%>');
-<% } %>
-
 const column = '<%- data.map.column -%>';
 <% if (data.map.colorRamp) { %>
 const colorRamp = '<%- data.map.colorRamp -%>';
+<% } %>
+
+<% if (data.map.type === 'choropleth') { %>
+  const source = new carto.source.SQL(`SELECT *, ${column}/ST_Area(the_geom) as norm_col FROM <%- data.map.dataset -%>`);
+<% } else { %>
+  const source = new carto.source.Dataset('<%- data.map.dataset -%>');
 <% } %>
 
 <% if (data.map.columnType !== 'date') { %>
@@ -42,7 +42,7 @@ const colorRamp = '<%- data.map.colorRamp -%>';
 
   <% if (data.map.type === 'bubbles') { %>
     <% if (data.map.geometry === 'point') { %>
-      const marker_width = `ramp([${column}], range(2,20), <%- data.map.columnType === 'number' ? 'quantiles' : 'category' -%>(7))`;
+      const marker_width = `ramp([${column}], range(2,15), <%- data.map.columnType === 'number' ? 'quantiles' : 'category' -%>(7))`;
       const marker_fill = '#EE4D5A';
     <% } %>
     <% if (data.map.geometry === 'line') { %>
@@ -69,7 +69,7 @@ const colorRamp = '<%- data.map.colorRamp -%>';
 
   <% if (data.map.type === 'choropleth') { %>
     <% if (data.map.geometry === 'polygon') { %>
-      const polygon_fill = `ramp([${column}], cartocolor(${colorRamp}), <%- data.map.columnType === 'number' ? 'quantiles' : 'category' -%>(7))`;
+      const polygon_fill = `ramp([norm_col], cartocolor(${colorRamp}), <%- data.map.columnType === 'number' ? 'quantiles' : 'category' -%>(7))`;
     <% } %>
   <% } %>
 
@@ -104,7 +104,7 @@ const cartoCSSStyle = new carto.style.CartoCSS(`
     marker-line-width: 1;
     marker-line-opacity: 1;
     marker-type: ellipse;
-    marker-allow-overlap: true;
+    marker-allow-overlap: false;
   }
   <% } %>
   <% if (data.map.geometry === 'line') { %>
