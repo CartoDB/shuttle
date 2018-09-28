@@ -1,6 +1,38 @@
 <template>
 
 <div>
+<div class="browser">
+    <div class="browser-header">
+      <span class="browser-headerPoint browser-headerPoint--red"></span>
+      <span class="browser-headerPoint browser-headerPoint--yellow"></span>
+      <span class="browser-headerPoint browser-headerPoint--green"></span>
+    </div>
+    <div class="browser-inner">
+        <div class="browser-bar">
+            <ul class="browser-barIcons">
+                <li class="browser-barIconsItem">
+                    <svg width="8px" height="8px" viewBox="0 0 8 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g data-v-31a768e4="" id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <path data-v-31a768e4="" d="M1.26544797,3.62351861 L7.25879652,3.62351861 L7.25879652,4.37648139 L1.26544797,4.37648139 L3.78796516,7.52962788 L3.2,8 L0,4 L3.2,0 L3.78796516,0.470372124 L1.26544797,3.62351861 Z" id="Combined-Shape" fill="#BABCBE" fill-rule="nonzero"></path>
+                        </g>
+                    </svg>
+                </li>
+                <li class="browser-barIconsItem">
+                    <svg width="8px" height="8px" viewBox="0 0 8 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g data-v-31a768e4="" id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <path data-v-31a768e4="" d="M1.26544797,3.62351861 L7.25879652,3.62351861 L7.25879652,4.37648139 L1.26544797,4.37648139 L3.78796516,7.52962788 L3.2,8 L0,4 L3.2,0 L3.78796516,0.470372124 L1.26544797,3.62351861 Z" id="Combined-Shape-Copy" fill="#BABCBE" fill-rule="nonzero" transform="translate(3.629398, 4.000000) rotate(-180.000000) translate(-3.629398, -4.000000) "></path>
+                        </g>
+                    </svg>
+                </li>
+            </ul>
+            <div class="browser-barAddress">http://cartodb.github.io/airsephora
+            <span></span>
+            </div>
+        </div>
+        <!---->
+        <div class="browser-content"></div>
+    </div>
+</div>
   <div class="export-iframe">
     <iframe ref="iframe" ></iframe>
   </div>
@@ -11,9 +43,8 @@
       <li><button @click="exportZip" class="export-button">Zip file</button></li>
       <li><form action="https://codepen.io/pen/define" method="POST" target="_blank">
   <input type="hidden" name="data" :value="codepen">
-  <input class="export-button" type="submit" value="Edit on Codepen">
+  <input class="export-button export-button--secondary" type="submit" value="Edit on Codepen">
 </form></li>
-      <li><button @click="reload" class="export-button export-button--secondary">Reload iframe</button></li>
     </ul>
   </div>
 </div>
@@ -136,8 +167,10 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: calc(100% + 20%);
     height: 100%;
+    transform: scale(.8);
+    transform-origin: 0 0;
   }
 
 /*  iframe {
@@ -148,6 +181,7 @@ export default {
   }*/
   .export {
     padding: 40px;
+    margin-top: -100px;
   }
   .export h1 {
     font: 700 20px 'Karla';
@@ -177,5 +211,88 @@ export default {
     background: transparent;
     color: #000;
   }
+   .browser {
+    width: 100%;
+  }
+
+  .browser-header {
+    background: #E8EAED;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    height: 38px;
+    display: flex;
+    padding: 14px;
+    position: relative;
+    z-index: 1;
+  }
+  .browser-headerPoint {
+    border-radius: 50%;
+    height: 8px;
+    width: 8px;
+    margin-right: 8px;
+  }
+    .browser-headerPoint--red {
+      background: #FF6159;
+    }
+    .browser-headerPoint--yellow {
+      background: #FFBD2D;
+    }
+    .browser-headerPoint--green {
+      background: #29C940;
+    }
+
+  .browser-bar {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+  }
+  .browser-barIcons {
+    display: flex;
+    padding: 0 8px;
+  }
+  .browser-barIconsItem {
+    margin-right: 12px;
+  }
+  .browser-inner {
+    position: relative;
+  }
+  .browser-inner:after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    pointer-events: none;
+  }
+
+  .browser-barAddress {
+    background: #F1F3F4;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font: 12px 'Karla';
+    color: rgba(0, 0, 0, 0.6);
+    flex: 1;
+  }
+
+    .browser-barAddress span {
+      animation-name: blinker;
+      animation-iteration-count: infinite;
+      animation-timing-function: cubic-bezier(1,0,0,1);
+      animation-duration: .8s;
+      display: inline-block;
+      width: 1px;
+      height: 12px;
+      background: rgba(0, 0, 0, .4);
+      vertical-align: middle;
+      transform: translateY(0px) translateX(-1px);
+      margin-left: 4px;
+    }
+
+    @keyframes blinker {
+      from { opacity: 1.0; } to { opacity: 0.0; }
+    }
+
 
 </style>
