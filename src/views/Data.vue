@@ -14,7 +14,7 @@
         <h2 class="data-title">Configure your map</h2> 
         <label class="data-item">
           <ul class="list-icons">
-            <li v-for="type in mapTypesForGeom" :key="type" class="list-iconsItem" @click="setMapType(type)">
+            <li v-for="type in mapTypesForGeom" :key="type" class="list-iconsItem" @click="setMapType(type)" :class="{ 'is-active' : type === mapType}">
               <div class="list-iconsItem">
                 <img :src="`/assets/maptypes/${type}.png`" class="icon-normal" />
                 <img :src="`/assets/maptypes/${type}_selected.png`" class="icon-active" />

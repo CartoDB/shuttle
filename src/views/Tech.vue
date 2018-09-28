@@ -4,14 +4,14 @@
       <h2 class="stack-title">CARTO Stack</h2> 
       <p class="stack-description">You can choose between CARTO.js (raster) and CARTO VL (vector)</p>
       <ul class="stack-options">
-        <li class="stack-optionsItem">
+        <li class="stack-optionsItem" @click="pickRaster" :class="{ 'is-active': isRaster }">
           <div class="stack-optionsItemMedia">
               <img :src="`/assets/stack/js.png`" class="icon-normal" />
               <img :src="`/assets/stack/js_selected.png`" class="icon-active" />
           </div>
           <h2>CARTO.js</h2>
         </li>
-        <li class="stack-optionsItem">
+        <li class="stack-optionsItem" @click="pickVector" :class="{ 'is-active': isVector }">
           <div class="stack-optionsItemMedia">
               <img :src="`/assets/stack/vector.png`" class="icon-normal" />
               <img :src="`/assets/stack/vector_selected.png`" class="icon-active" />
@@ -22,6 +22,32 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'Tech',
+
+  computed: {
+    isRaster() {
+      return this.$store.state.techType === 'cartojs';
+    },
+
+    isVector() {
+      return this.$store.state.techType === 'cartovl';
+    }
+  },
+
+  methods: {
+    pickRaster() {
+      this.$store.commit('setTech', 'cartojs');
+    },
+    pickVector() {
+      this.$store.commit('setTech', 'cartovl');
+    }
+  }
+}
+</script>
+
 
 <style scoped>
   .stack-title {
