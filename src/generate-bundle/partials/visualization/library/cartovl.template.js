@@ -19,8 +19,8 @@ map.addControl(nav, 'top-left');
 
 // Define user
 carto.setDefaultAuth({
-  user: 'cartovl',
-  apiKey: 'default_public'
+  apiKey: '<%- data.apiKey -%>',
+  user: '<%- data.username -%>'
 });
 
 const column = '$<%- data.map.column -%>';
@@ -43,7 +43,7 @@ const cartoColorRamp = '<%- data.map.colorRamp -%>';
 
 <% if (data.map.type === 'category' || data.map.type === 'choropleth' || data.map.type === 'gradient') { %>
   const width = `7`;
-  const color = `ramp(<%- data.map.columnType === "number" ? "viewportQuantiles" : "top" -%>(${column}, 7), ${cartoColorRamp})`;
+  const color = `ramp(<%- data.map.columnType === "number" ? "viewportQuantiles" : "top" -%>(${column}, 10), ${cartoColorRamp})`;
 <% } %>
 
 <% if (data.map.type === 'flow') { %>

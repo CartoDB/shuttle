@@ -43,18 +43,18 @@ const baseData = {
     library: 'cartovl',
     data: {
       apiKey: 'default_public',
-      username: 'cartojs-test',
+      username: 'roman-carto',
       map: {
         // bubbles, category, choropleth, gradient, flow
         type: 'category',
-        geometry: 'point',
+        geometry: 'polygon',
         basemap: 'voyager',
         extent: [-3.888962, 40.312064, -3.518051, 40.643271],
-        dataset: 'airbnb_listings',
-        column: 'room_type',
+        dataset: 'barrios',
+        column: 'nomdis',
         // Only CARTO VL
         columnType: 'string',
-        colorRamp: 'Burg'
+        colorRamp: 'Bold'
       }
     }
   }
