@@ -29,13 +29,13 @@ export default new Vuex.Store({
       panels: [],
       footer: null
     },
-    techType: 'vl',
+    techType: null,
     visualization: {
       basemap: 'voyager',
       data: {
         geomType: null,
         mapType: null,
-        username: null,
+        username: 'roman-carto',
         dataset: null,
         extent: null,
         ramp: null,
@@ -111,6 +111,10 @@ export default new Vuex.Store({
 
     setBasemap: function (state, basemap) {
       state.visualization.basemap = basemap;
+    },
+
+    setTech: function (state, tech) {
+      state.techType = tech;
     }
   },
   actions: {

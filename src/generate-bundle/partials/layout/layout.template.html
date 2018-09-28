@@ -1,0 +1,17 @@
+<%- toolbar -%>
+
+<div class="as-content">
+  <main class="as-main">
+    <div class="as-map-area">
+      <%- map -%>
+
+      <%- panels -%>
+    </div>
+
+    <%- footer -%>
+  </main>
+
+  <% sidebars.map(sidebar => { %>
+    <%- sidebar -%>
+  <% }); %>
+</div>
