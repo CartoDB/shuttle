@@ -5,6 +5,7 @@ import Colors from './views/Colors.vue';
 import Layout from './views/Layout.vue';
 import Data from './views/Data.vue';
 import Tech from './views/Tech.vue';
+import Export from './views/Export.vue';
 
 Vue.use(Router);
 
@@ -16,8 +17,8 @@ const TECH = 'tech';
 export const steps = [
   COLORS,
   LAYOUT,
-  DATA,
-  TECH
+  TECH,
+  DATA
 ];
 
 export default new Router({
@@ -27,6 +28,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/bandera',
+      name: 'export',
+      component: Export
     },
     {
       path: '/colors',

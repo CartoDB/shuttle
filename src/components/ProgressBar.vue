@@ -18,12 +18,12 @@ export default {
 
 <style scoped>
 .progressBg {
-  background-color: #dadff8;
+  background-color: #000;
 }
 
 .progressBar {
   height: 8px;
-  background-color: #3254e0;
-  transition: width 0.2s linear;
+  background-color: #F2DC5D;
+  transition: all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 </style>

@@ -1,14 +1,12 @@
 <template>
-<div class="step-wrapper">
-  <div class="step" v-for="(step, i) in steps" :key="i" @click="goTo(step)">
-    <div class="step-number" :class="{ 'step-number--active' : (i <=index ) }" >
-      {{ i + 1 }}
-    </div>
+<ul class="step-wrapper">
+  <li class="step" :class="{ 'step-number--active' : (i <= index ), 'step-number--completed': (completedSteps.indexOf(step) !== -1) }" v-for="(step, i) in steps" :key="i" @click="goTo(step)">
+
     <div class="step-name">
       {{ step }}
     </div>
-  </div>
-</div>
+  </li>
+</ul>
 </template>
 
 <script>
@@ -22,6 +20,11 @@ export default {
       default: 0
     }
   },
+  computed: {
+    completedSteps() {
+      return this.$store.state.completedSteps;
+    }
+  },
   data: function () {
     return {
       steps
@@ -29,45 +32,51 @@ export default {
   },
   methods: {
     goTo: function (step) {
-      this.$router.push({ name: step });
+      const stepIndex = steps.indexOf(step);
+      if (stepIndex <= this.$store.state.completedIndex + 1) {
+        this.$router.push({ name: step });
+      }
     }
-  }
+  },
+
 }
 </script>
 
 <style scoped>
 .step-wrapper {
-  display: flex;
-  justify-content: space-around;
-  padding: 24px 0;
 }
 
 .step {
   display: flex;
-  flex-direction: column;
+  margin-bottom: 20px;
+  background:rgba(0, 0, 0, 0.02);
+  padding: 20px;
   align-items: center;
-  cursor: pointer;
+  border: 2px solid transparent;
+  color: rgba(0, 0, 0, 0.2);
 }
-
+.step:last-child {
+  margin-bottom: 0;
+}
 .step-name {
+  font: 20px 'Karla';
   text-transform: capitalize;
-  font-weight: bold;
-  margin-top: 12px;
 }
 
 .step-number {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color:#dadff8;
-  color: white;
-  border: 1px solid #dadada;
+  font:  40px 'Playfair Display';
+  margin-right: 8px;
+    transition: all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
 .step-number--active {
-  background-color: #3254e0;
+  border: 2px solid #000;
+  color: rgba(0, 0, 0, 1);
 }
+.step-number--active.step-number--completed {
+  background-color: #3BCEAC;
+  border: 2px solid #3BCEAC;
+  color: #fff;
+}
+
 </style>
