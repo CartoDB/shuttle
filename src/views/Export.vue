@@ -184,7 +184,7 @@ export default {
     margin-top: -100px;
   }
   .export h1 {
-    font: 700 20px 'Karla';
+    font: 400 16px 'Karla';
     margin-bottom: 20px;
   }
   .export-list {
@@ -195,7 +195,7 @@ export default {
     margin-right: 24px;
   }
   .export-list li h2 {
-    font: 400 16px 'Karla';
+    font: 700 20px 'Karla';
   }
   .export-button {
     border: 2px solid transparent;
