@@ -1,18 +1,21 @@
 <template>
 
 <div>
-    <div class="export-iframe">
-      <iframe ref="iframe" ></iframe>
-    </div>
-    <div class="export">
-      <h1>Here's a preview of your map</h1>
-      <ul class="export-list">
-        <li><h2>Export to</h2></li>
-        <li><button @click="exportZip" class="export-button">Zip file</button></li>
-        <li><button @click="exportCodePen" class="export-button export-button--secondary">Codepen</button></li>
-        <li><button @click="reload" class="export-button export-button--secondary">Reload iframe</button></li>
-      </ul>
-    </div>
+  <div class="export-iframe">
+    <iframe ref="iframe" ></iframe>
+  </div>
+  <div class="export">
+    <h1>Here's a preview of your map</h1>
+    <ul class="export-list">
+      <li><h2>Export to</h2></li>
+      <li><button @click="exportZip" class="export-button">Zip file</button></li>
+      <li><form action="https://codepen.io/pen/define" method="POST" target="_blank">
+  <input type="hidden" name="data" :value="codepen">
+  <input class="export-button" type="submit" value="Edit on Codepen">
+</form></li>
+      <li><button @click="reload" class="export-button export-button--secondary">Reload iframe</button></li>
+    </ul>
+  </div>
 </div>
 
 </template>
@@ -54,7 +57,7 @@ export default {
     },
 
     exportCodePen() {
-
+      this.$store.dispatch('generateCodePen', this.files);
     },
 
     reload() {
@@ -98,8 +101,22 @@ export default {
     }
   },
 
+  computed: {
+    codepen() {
+      return JSON.stringify({
+        html: this.files['index.html'],
+        js: this.files['src/app.js']
+      });
+    }
+  },
+
   mounted() {
-    this.generateData();
+    if (this.$store.state.techType === null) {
+      this.$router.replace({ name: 'home' });
+    } else {
+      this.generateData();
+    }
+
   }
 }
 </script>
