@@ -314,6 +314,7 @@ export default {
   background: #F3F5F5;
   height: 500px;
   background-size: cover;
+  transition: background-image 0.2s linear;
 }
 
 .browser-contentElement {

@@ -128,7 +128,7 @@
         <p>Panels</p>
       </li>
     </ul>
-
+    <img class="preloadbasemaps" v-for="(basemap, index) in allBaseMaps" :key="index" :src="basemap" />
     </div>
   </div>
 </template>
@@ -157,6 +157,9 @@ export default {
     };
   },
   computed: {
+    allBaseMaps() {
+      return BASEMAPS;
+    },
     currentBasemap() {
       return BASEMAPS[this.basemap];
     },
@@ -376,5 +379,12 @@ export default {
   }
   .template-innerItemMedia {
     pointer-events: none;
+  }
+
+  .preloadbasemaps {
+    position: absolute;
+    left: -1000px;
+    top: -1000px;
+    opacity: 0;
   }
 </style>
