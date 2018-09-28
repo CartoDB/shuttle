@@ -1,7 +1,6 @@
 <template>
 <ul class="step-wrapper">
   <li class="step" :class="{ 'step-number--active' : (i <= index ), 'step-number--completed': (completedSteps.indexOf(step) !== -1) }" v-for="(step, i) in steps" :key="i" @click="goTo(step)">
-
     <div class="step-name">
       {{ step }}
     </div>
@@ -43,9 +42,6 @@ export default {
 </script>
 
 <style scoped>
-.step-wrapper {
-}
-
 .step {
   display: flex;
   margin-bottom: 20px;

@@ -93,6 +93,10 @@ export default {
     },
 
     routeIndex: function () {
+      if (this.$route.name === 'export') {
+        return steps.length;
+      }
+
       return steps.indexOf(this.$route.name);
     },
 
