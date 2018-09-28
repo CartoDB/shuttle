@@ -70,67 +70,100 @@
     <ul class="template-inner">
       <li class="template-innerItem" :class="{'is-inactive': hasToolbar}" draggable="true" @mouseover="onDrag" @mouseout="onDragEnd" @drag="onDrag" @dragend="onDragEnd" data-type="lateralToolbar">
         <div class="template-innerItemMedia">
-          <svg width="24px" height="74px" viewBox="0 0 24 74" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <rect id="Rectangle-Copy-2" fill="#2D51E7" x="0" y="0" width="24" height="74" rx="4"></rect>
-            <rect id="Rectangle-4" fill="#5675ED" x="8" y="57" width="9" height="9"></rect>
+          <svg width="92px" height="61px" viewBox="0 0 92 61" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g id="Group-6" fill-rule="nonzero">
+                      <rect id="Rectangle-2-Copy-14" fill="#EEEEEE" x="0" y="0" width="92" height="61"></rect>
+                      <rect id="Rectangle" fill="#D5D5D5" x="38" y="7" width="13" height="47"></rect>
+                      <rect id="Rectangle-4" fill-opacity="0.4" fill="#FFFFFF" x="41" y="44" width="7" height="7"></rect>
+                  </g>
+              </g>
           </svg>
         </div>
         <p>Lateral Toolbar</p>
       </li>
       <li class="template-innerItem" :class="{'is-inactive': hasToolbar}" draggable="true" @mouseover="onDrag" @mouseout="onDragEnd" @drag="onDrag" @dragend="onDragEnd" data-type="topToolbar">
         <div class="template-innerItemMedia">
-          <svg width="89px" height="17px" viewBox="0 0 89 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <rect id="Rectangle-Copy-3" fill="#2D51E7" x="0" y="0" width="89" height="17" rx="4"></rect>
-            <rect id="Rectangle-4-Copy" fill="#5675ED" x="6" y="4" width="9" height="9"></rect>
+          <svg width="92px" height="61px" viewBox="0 0 92 61" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g id="Group-7" fill-rule="nonzero">
+                      <rect id="Rectangle-2-Copy-15" fill="#EEEEEE" x="0" y="0" width="92" height="61"></rect>
+                      <rect id="Rectangle-Copy" fill="#D5D5D5" x="7" y="7" width="77" height="13"></rect>
+                      <rect id="Rectangle-4-Copy" fill-opacity="0.4" fill="#FFFFFF" x="10" y="10" width="7" height="7"></rect>
+                  </g>
+              </g>
           </svg>
         </div>
         <p>Top Toolbar</p>
       </li>
       <li class="template-innerItem" :class="{'is-inactive': hasAllSidebars}" draggable="true" @mouseover="onDrag" @mouseout="onDragEnd" @drag="onDrag" @dragend="onDragEnd" data-type="sidebar">
         <div class="template-innerItemMedia">
-            <svg width="75px" height="76px" viewBox="0 0 75 76" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-              <rect id="Rectangle" fill="#2D51E7" x="0" y="0" width="75" height="76" rx="4"></rect>
-              <rect id="Rectangle-2" fill="#5874ED" x="7" y="10" width="57" height="4"></rect>
-              <rect id="Rectangle-2-Copy" fill="#5874ED" x="7" y="19" width="30" height="14"></rect>
-              <rect id="Rectangle-2-Copy-2" fill="#5874ED" x="7" y="37" width="30" height="3"></rect>
-              <rect id="Rectangle-2-Copy-3" fill="#5874ED" x="7" y="46" width="40" height="3"></rect>
-              <rect id="Rectangle-2-Copy-4" fill="#5874ED" x="7" y="55" width="60" height="3"></rect>
-              <rect id="Rectangle-2-Copy-5" fill="#5874ED" x="7" y="64" width="40" height="3"></rect>
-            </svg>
+          <svg width="92px" height="61px" viewBox="0 0 92 61" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g id="Group-8" fill-rule="nonzero">
+                      <rect id="Rectangle-2-Copy-16" fill="#EEEEEE" x="0" y="0" width="92" height="61"></rect>
+                      <g id="Group-5" transform="translate(18.000000, 9.000000)">
+                          <rect id="Rectangle-Copy-2" fill="#D5D5D5" x="0" y="0" width="57" height="43"></rect>
+                          <rect id="Rectangle-4-Copy-2" fill-opacity="0.4" fill="#FFFFFF" x="5" y="4" width="39" height="6"></rect>
+                          <rect id="Rectangle-4-Copy-3" fill-opacity="0.4" fill="#FFFFFF" x="5" y="14" width="19" height="16"></rect>
+                      </g>
+                      <rect id="Rectangle-4-Copy-4" fill-opacity="0.4" fill="#FFFFFF" x="23" y="44" width="29" height="3"></rect>
+                  </g>
+              </g>
+          </svg>
         </div>
         <p>Sidebar</p>
       </li>
       <li class="template-innerItem" :class="{'is-inactive': hasFooter}" draggable="true" @mouseover="onDrag" @mouseout="onDragEnd" @drag="onDrag" @dragend="onDragEnd" data-type="footer">
         <div class="template-innerItemMedia">
-            <svg width="125px" height="54px" viewBox="0 0 125 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-              <rect id="Rectangle-Copy" fill="#2D51E7" x="0" y="0" width="125" height="54" rx="4"></rect>
-              <rect id="Rectangle-2-Copy-6" fill="#5874ED" x="9" y="11" width="44" height="4"></rect>
-              <rect id="Rectangle-3" fill="#5675ED" x="10" y="26" width="8" height="18"></rect>
-              <rect id="Rectangle-3-Copy-5" fill="#5675ED" x="60" y="26" width="8" height="18"></rect>
-              <rect id="Rectangle-3-Copy" fill="#5675ED" x="20" y="34" width="8" height="10"></rect>
-              <rect id="Rectangle-3-Copy-6" fill="#5675ED" x="70" y="34" width="8" height="10"></rect>
-              <rect id="Rectangle-3-Copy-2" fill="#5675ED" x="30" y="29" width="8" height="15"></rect>
-              <rect id="Rectangle-3-Copy-7" fill="#5675ED" x="80" y="29" width="8" height="15"></rect>
-              <rect id="Rectangle-3-Copy-3" fill="#5675ED" x="50" y="38" width="8" height="6"></rect>
-              <rect id="Rectangle-3-Copy-8" fill="#5675ED" x="100" y="38" width="8" height="6"></rect>
-              <rect id="Rectangle-3-Copy-4" fill="#5675ED" x="40" y="24" width="8" height="20"></rect>
-              <rect id="Rectangle-3-Copy-9" fill="#5675ED" x="90" y="24" width="8" height="20"></rect>
-            </svg>
+          <svg width="92px" height="61px" viewBox="0 0 92 61" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+              <desc>Created with Sketch.</desc>
+              <defs></defs>
+              <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g id="Group-9" fill-rule="nonzero">
+                      <rect id="Rectangle-2-Copy-17" fill="#EEEEEE" x="0" y="0" width="92" height="61"></rect>
+                      <g id="Group-5-Copy" transform="translate(8.000000, 27.000000)">
+                          <rect id="Rectangle-Copy-2" fill="#D5D5D5" x="0" y="0" width="77" height="28"></rect>
+                          <rect id="Rectangle-4-Copy-3" fill-opacity="0.4" fill="#FFFFFF" x="5" y="4" width="29" height="2"></rect>
+                      </g>
+                      <rect id="Rectangle-4-Copy-5" fill-opacity="0.4" fill="#FFFFFF" x="14" y="44" width="4" height="6"></rect>
+                      <rect id="Rectangle-4-Copy-6" fill-opacity="0.4" fill="#FFFFFF" x="20" y="41" width="4" height="9"></rect>
+                      <rect id="Rectangle-4-Copy-7" fill-opacity="0.4" fill="#FFFFFF" x="26" y="39" width="4" height="11"></rect>
+                      <rect id="Rectangle-4-Copy-8" fill-opacity="0.4" fill="#FFFFFF" x="32" y="43" width="4" height="7"></rect>
+                      <rect id="Rectangle-4-Copy-9" fill-opacity="0.4" fill="#FFFFFF" x="38" y="40" width="4" height="10"></rect>
+                      <rect id="Rectangle-4-Copy-10" fill-opacity="0.4" fill="#FFFFFF" x="44" y="38" width="4" height="12"></rect>
+                      <rect id="Rectangle-4-Copy-11" fill-opacity="0.4" fill="#FFFFFF" x="50" y="42" width="4" height="8"></rect>
+                      <rect id="Rectangle-4-Copy-12" fill-opacity="0.4" fill="#FFFFFF" x="56" y="39" width="4" height="11"></rect>
+                      <rect id="Rectangle-4-Copy-13" fill-opacity="0.4" fill="#FFFFFF" x="62" y="41" width="4" height="9"></rect>
+                  </g>
+              </g>
+          </svg>
           </div>
           <p>Footer</p>
       </li>
       <li class="template-innerItem" :class="{'is-inactive': hasAllPanels}" draggable="true" @mouseover="onDrag" @mouseout="onDragEnd" @drag="onDrag" @dragend="onDragEnd" data-type="panel">
         <div class="template-innerItemMedia">
-          <svg width="75px" height="54px" viewBox="0 0 75 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-              <rect id="Rectangle" fill="#2D51E7" x="0" y="0" width="75" height="54" rx="4"></rect>
-              <rect id="Rectangle-2" fill="#5874ED" x="7" y="10" width="4" height="4"></rect>
-              <rect id="Rectangle-2-Copy-6" fill="#5874ED" x="17" y="10" width="24" height="4"></rect>
-              <rect id="Rectangle-2-Copy" fill="#5874ED" x="7" y="20" width="4" height="4"></rect>
-              <rect id="Rectangle-2-Copy-7" fill="#5874ED" x="17" y="20" width="44" height="4"></rect>
-              <rect id="Rectangle-2-Copy-2" fill="#5874ED" x="7" y="30" width="4" height="4"></rect>
-              <rect id="Rectangle-2-Copy-8" fill="#5874ED" x="17" y="30" width="38" height="4"></rect>
-              <rect id="Rectangle-2-Copy-3" fill="#5874ED" x="7" y="40" width="4" height="4"></rect>
-              <rect id="Rectangle-2-Copy-9" fill="#5874ED" x="17" y="40" width="10" height="4"></rect>
+          <svg width="92px" height="61px" viewBox="0 0 92 61" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+              <desc>Created with Sketch.</desc>
+              <defs></defs>
+              <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g id="Group-10" fill-rule="nonzero">
+                      <rect id="Rectangle-2-Copy-18" fill="#EEEEEE" x="0" y="0" width="92" height="61"></rect>
+                      <g id="Group-5-Copy-2" transform="translate(8.000000, 9.000000)">
+                          <rect id="Rectangle-Copy-2" fill="#D5D5D5" x="0" y="0" width="77" height="45"></rect>
+                          <rect id="Rectangle-4-Copy-3" fill-opacity="0.4" fill="#FFFFFF" x="5" y="5" width="4" height="4"></rect>
+                          <rect id="Rectangle-4-Copy-23" fill-opacity="0.4" fill="#FFFFFF" x="15" y="5" width="44" height="4"></rect>
+                          <rect id="Rectangle-4-Copy-14" fill-opacity="0.4" fill="#FFFFFF" x="5" y="15" width="4" height="4"></rect>
+                          <rect id="Rectangle-4-Copy-24" fill-opacity="0.4" fill="#FFFFFF" x="15" y="15" width="36" height="4"></rect>
+                          <rect id="Rectangle-4-Copy-15" fill-opacity="0.4" fill="#FFFFFF" x="5" y="25" width="4" height="4"></rect>
+                          <rect id="Rectangle-4-Copy-25" fill-opacity="0.4" fill="#FFFFFF" x="15" y="25" width="49" height="4"></rect>
+                          <rect id="Rectangle-4-Copy-16" fill-opacity="0.4" fill="#FFFFFF" x="5" y="35" width="4" height="4"></rect>
+                          <rect id="Rectangle-4-Copy-26" fill-opacity="0.4" fill="#FFFFFF" x="15" y="35" width="19" height="4"></rect>
+                      </g>
+                  </g>
+              </g>
           </svg>
         </div>
         <p>Panels</p>
@@ -323,27 +356,39 @@ export default {
   .template-inner {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     padding: 40px;
   }
-
   .template-innerItem {
-    background: #F7F9FA;
-    border-radius: 8px;
-    margin-bottom: 56px;
-    height: 143px;
-    background: #F7F9FA;
-    text-align: center;
-    position: relative;
-    width: 160px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-right: 40px;
   }
+  .template-innerItem:last-child{
+    margin-right: 0;
+  }
+
+  .template-innerItemMedia {
+    position: relative;
+    width: 92px;
+    height: 61px;
+    margin-bottom: 8px;
+  }
+  .template-innerItemMedia:hover {
+    cursor: pointer;
+  }
+  .template-innerItemMedia:hover:after,
+  .template-innerItemMedia.is-dragging:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 2px solid #000;
+    z-index: 3;
+  }
+
   .template-innerItem:hover {
     cursor: pointer;
   }
-  .template-innerItem:hover:after,
   .template-innerItem.is-dragging:after {
     content: '';
     position: absolute;
@@ -355,10 +400,23 @@ export default {
     border: 2px dotted #2D51E8;
     border-radius: 8px;
   }
-  .template-innerItem.is-dragging {
-    background: #F7F9FA;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.14);
+  .template-innerItem.is-dragging .template-innerItemMedia {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.50);
   }
+  .template-innerItem:hover .template-innerItemMedia:after  {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    border: 2px solid #000;
+  }
+  .template-innerItem.is-dragging .template-innerItemMedia:after  {
+    border: 2px dashed #000;
+  }
+
   .template-innerItem.is-inactive {
     pointer-events: none;
   }
@@ -376,11 +434,8 @@ export default {
 
 
   .template-innerItem p {
-    font-size: 14px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 20px;
+    font: 16px 'Karla';
+    color: rgba(0, 0, 0, 0.6);
   }
   .template-innerItem:last-child {
     margin-bottom: 0;

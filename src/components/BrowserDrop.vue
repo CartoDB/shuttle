@@ -53,7 +53,7 @@ export default {
     dragenterZone(e) {
       const [element, ...position] = e.target.dataset.layout.split('|');
       if (!this.isSelected(element, position)) {
-        e.target.style['backgroundColor'] = '#fabada';
+        e.target.style['backgroundColor'] = 'rgba(0, 0, 0, 0.7)';
         /* color hover */
         e.target.style['transform'] = 'scale(.95)';
       }
