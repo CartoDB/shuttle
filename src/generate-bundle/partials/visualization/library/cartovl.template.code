@@ -23,7 +23,7 @@ carto.setDefaultAuth({
   user: '<%- data.username -%>'
 });
 
-const column = '$<%- data.map.column -%>';
+const column = '<%- data.map.column -%>';
 const cartoColorRamp = '<%- data.map.colorRamp -%>';
 
 <% if (data.map.type === 'default' || data.map.type === 'animated') { %>
@@ -37,26 +37,40 @@ const cartoColorRamp = '<%- data.map.colorRamp -%>';
 <% } %>
 
 <% if (data.map.type === 'bubbles' || data.map.type === 'flow') { %>
-  const width = `ramp(sqrt(linear(clusterSum(${column}))), [3, 30])\nresolution: 8`;
+  const width = `ramp(sqrt(linear(clusterSum($${column}))), [3, 30])\nresolution: 8`;
   const color = '#EE4D5A'
 <% } %>
 
-<% if (data.map.type === 'category' || data.map.type === 'choropleth' || data.map.type === 'gradient') { %>
+<% if (data.map.type === 'category' || data.map.type === 'gradient') { %>
   const width = `7`;
   <% if (data.map.columnType === 'number') { %>
-    const color = `ramp(viewportQuantiles(${column}, 7), ${cartoColorRamp})`;
+    const color = `ramp(viewportQuantiles($${column}, 7), ${cartoColorRamp})`;
   <% } else if (data.map.columnType === 'string') { %>
-    const color = `ramp(${column}, ${cartoColorRamp})`;
+    const color = `ramp($${column}, ${cartoColorRamp})`;
+  <% } %>
+<% } %>
+
+<% if (data.map.type === 'choropleth') { %>
+  const width = `7`;
+  <% if (data.map.columnType === 'number') { %>
+    const color = `ramp(viewportQuantiles($norm_col, 7), ${cartoColorRamp})`;
+  <% } else if (data.map.columnType === 'string') { %>
+    const color = `ramp($norm_col, ${cartoColorRamp})`;
   <% } %>
 <% } %>
 
 // Define layer
-const source = new carto.source.Dataset('<%- data.map.dataset -%>');
+<% if (data.map.type === 'choropleth') { %>
+  const source = new carto.source.SQL(`SELECT *, ${column}/ST_Area(the_geom) as norm_col FROM <%- data.map.dataset -%>`);
+<% } else { %>
+  const source = new carto.source.Dataset('<%- data.map.dataset -%>');
+<% } %>
+
 const viz = new carto.Viz(`
   width: ${width}
   color: ${color}
   <% if (data.map.type === 'animated') { %>
-  filter: animation(linear(${column},globalMin(${column}),globalMax(${column})),30,fade(0.1,0.5))
+  filter: animation(linear($${column},globalMin($${column}),globalMax($${column})),30,fade(0.1,0.5))
   <% } %>
 `);
 const layer = new carto.Layer('layer', source, viz);
