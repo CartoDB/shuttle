@@ -6,15 +6,15 @@
       <ul class="stack-options">
         <li class="stack-optionsItem" @click="pickRaster" :class="{ 'is-active': isRaster }">
           <div class="stack-optionsItemMedia">
-              <img :src="`/assets/stack/js.png`" class="icon-normal" />
-              <img :src="`/assets/stack/js_selected.png`" class="icon-active" />
+              <img :src="`${baseUrl}assets/stack/js.png`" class="icon-normal" />
+              <img :src="`${baseUrl}assets/stack/js_selected.png`" class="icon-active" />
           </div>
           <h2>CARTO.js</h2>
         </li>
         <li class="stack-optionsItem" @click="pickVector" :class="{ 'is-active': isVector }">
           <div class="stack-optionsItemMedia">
-              <img :src="`/assets/stack/vector.png`" class="icon-normal" />
-              <img :src="`/assets/stack/vector_selected.png`" class="icon-active" />
+              <img :src="`${baseUrl}assets/stack/vector.png`" class="icon-normal" />
+              <img :src="`${baseUrl}assets/stack/vector_selected.png`" class="icon-active" />
           </div>
           <h2>CARTO VL</h2>
         </li>
@@ -26,6 +26,12 @@
 <script>
 export default {
   name: 'Tech',
+
+  data: function () {
+    return {
+      baseUrl: process.env.BASE_URL 
+    };
+  },
 
   computed: {
     isRaster() {

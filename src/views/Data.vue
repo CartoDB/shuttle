@@ -17,8 +17,8 @@
           <ul class="list-icons">
             <li v-for="type in mapTypesForGeom" :key="type" class="list-iconsItem" @click="setMapType(type)" :class="{ 'is-active' : type === mapType, 'is-disabled': type === 'animated' && !isVector }">
               <div class="list-iconsItem">
-                <img :src="`/assets/maptypes/${type}.png`" class="icon-normal" />
-                <img :src="`/assets/maptypes/${type}_selected.png`" class="icon-active" />
+                <img :src="`${baseUrl}assets/maptypes/${type}.png`" class="icon-normal" />
+                <img :src="`${baseUrl}assets/maptypes/${type}_selected.png`" class="icon-active" />
               </div>
               <h2>{{ type }}</h2>
             </li>
@@ -66,6 +66,12 @@ let timeoutId = null;
 
 export default {
   name: 'Data',
+
+  data: function () {
+    return {
+      baseUrl: process.env.BASE_URL
+    }
+  },
 
   watch: {
     username: function (username) {
