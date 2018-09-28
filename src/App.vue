@@ -11,13 +11,13 @@
       </div>
       <ul class="header-actions">
         <li>
-          <button class="header-button is-prev" @click="previousStep">
+          <button class="header-button is-prev" @click="previousStep" :disabled="previousButtonDisabled">
             Previous
           </button>
         </li>
         <li>
-          <button class="header-button" @click="completeStep">
-            Next
+          <button class="header-button" @click="completeStep" :disabled="nextButtonDisabled">
+            {{ nextButtonCaption }}
           </button>
         </li>
       </ul>
@@ -65,6 +65,29 @@ export default {
   },
 
   computed: {
+    nextButtonCaption: function () {
+      const finish = (this.$route.name === 'export' || this.$route.name === steps[steps.length - 1]);
+      return finish ? 'Finish' : 'Next';
+    },
+
+    nextButtonDisabled: function () {
+      if (this.$route.name === 'export') {
+        return true;
+      }
+
+      if (this.$route.name === 'tech') {
+        return this.$store.state.techType === null;
+      }
+
+      // TODO: do disabed logic for data
+
+      return false;
+    },
+
+    previousButtonDisabled: function () {
+      return this.$route.name === steps[0];
+    },
+
     completedSteps: function () {
       return this.$store.state.completedSteps;
     },
@@ -185,5 +208,9 @@ export default {
   color: #000;
   border: 2px solid transparent;
   padding-left: 0;
+}
+.header-button[disabled] {
+  opacity: 0.27;
+  pointer-events: none;
 }
 </style>

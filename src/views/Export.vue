@@ -50,7 +50,6 @@ export default {
   },
   methods: {
     exportZip() {
-      debugger;
       generateBundle(this.files);
     },
 
@@ -116,7 +115,7 @@ export default {
     overflow: hidden;
   }
    
-  .export-ifram iframe {
+  .export-iframe iframe {
     position: absolute;
     top: 0;
     left: 0;
