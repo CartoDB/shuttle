@@ -120,15 +120,21 @@ export default {
         return [];
       }
 
-      const types = ['number'];
+      const types = [];
 
       switch (this.mapType) {
-        case 'choropleth':
-          // Choropleth by date?
+        case 'category':
           types.push('string');
           break;
+        case 'choropleth':
+        case 'category':
+        case 'bubbles':
+        case 'gradient':
+        case 'flow':
+          types.push('number');
+          break;
         case 'animated':
-          types.push('string');
+          types.push('number');
           types.push('date');
           break;
         default:
