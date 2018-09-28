@@ -51,9 +51,12 @@ export default {
       e.preventDefault();
     },
     dragenterZone(e) {
-      /* color hover */
-      e.target.style['backgroundColor'] = '#fabada';
-      e.target.style['transform'] = 'scale(.95)';
+      const [element, ...position] = e.target.dataset.layout.split('|');
+      if (!this.isSelected(element, position)) {
+        e.target.style['backgroundColor'] = '#fabada';
+        /* color hover */
+        e.target.style['transform'] = 'scale(.95)';
+      }
     },
     dragleaveZone(e) {
       const [element, ...position] = e.target.dataset.layout.split('|');
