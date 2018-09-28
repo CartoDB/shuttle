@@ -119,7 +119,7 @@ export default {
           }
         }
       };
-      console.log(data);
+
       const { files, inject } = generate(data);
 
       this.files = files;
