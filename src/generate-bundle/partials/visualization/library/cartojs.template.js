@@ -12,67 +12,84 @@ const client = new carto.Client({
   username: '<%- data.username -%>'
 });
 
-const source = new carto.source.Dataset('<%- data.map.dataset -%>');
+<% if (data.map.type === 'choropleth') { %>
+  const source = new carto.source.SQL('SELECT *, ST_Area(the_geom) as pol_area FROM <%- data.map.dataset -%>');
+<% } else { %>
+  const source = new carto.source.Dataset('<%- data.map.dataset -%>');
+<% } %>
 
 const column = '<%- data.map.column -%>';
 const colorRamp = '<%- data.map.colorRamp -%>';
 
-<% if (data.map.type === 'default') { %>
-  <% if (data.map.geometry === 'point') { %>
-    const marker_width = 7;
-    const marker_fill = '#EE4D5A';
+<% if (data.map.columnType !== 'date') { %>
+  <% if (data.map.type === 'default') { %>
+    <% if (data.map.geometry === 'point') { %>
+      const marker_width = 7;
+      const marker_fill = '#EE4D5A';
+    <% } %>
+
+    <% if (data.map.geometry === 'line') { %>
+      const line_width = 1.5;
+      const line_color = '#4CC8A3';
+    <% } %>
+
+    <% if (data.map.geometry === 'polygon') { %>
+      const polygon_fill = '#826DBA';
+    <% } %>
   <% } %>
 
-  <% if (data.map.geometry === 'line') { %>
-    const line_width = 1.5;
-    const line_color = '#4CC8A3';
+  <% if (data.map.type === 'bubbles') { %>
+    <% if (data.map.geometry === 'point') { %>
+      const marker_width = `ramp([${column}], range(2,20), <%- data.map.columnType === 'number' ? 'quantiles' : 'category' -%>(7))`;
+      const marker_fill = '#EE4D5A';
+    <% } %>
+    <% if (data.map.geometry === 'line') { %>
+      const line_width = `ramp([${column}], range(1,2.5), <%- data.map.columnType === 'number' ? 'quantiles' : 'category' -%>(7))`;
+      const line_color = '#4CC8A3';
+    <% } %>
   <% } %>
 
-  <% if (data.map.geometry === 'polygon') { %>
-    const polygon_fill = '#826DBA';
-  <% } %>
-<% } %>
+  <% if (data.map.type === 'category') { %>
+    <% if (data.map.geometry === 'point') { %>
+      const marker_width = 7;
+      const marker_fill = `ramp([${column}], cartocolor(${colorRamp}), <%- data.map.columnType === 'number' ? 'quantiles' : 'category' -%>(7))`;
+    <% } %>
 
-<% if (data.map.type === 'bubbles') { %>
-const marker_width = `ramp([${column}], range(2,20), quantiles(7))`;
-const marker_fill = '#EE4D5A';
-<% } %>
+    <% if (data.map.geometry === 'line') { %>
+      const line_width = 1.5;
+      const line_color = `ramp([${column}], cartocolor(${colorRamp}), <%- data.map.columnType === 'number' ? 'quantiles' : 'category' -%>(7))`;
+    <% } %>
 
-<% if (data.map.type === 'category') { %>
-  <% if (data.map.geometry === 'point') { %>
-    const marker_width = 7;
-    const marker_fill = `ramp([${column}], cartocolor(${colorRamp}), category(7))`;
-  <% } %>
-
-  <% if (data.map.geometry === 'line') { %>
-    const line_width = 1.5;
-    const line_color = `ramp([${column}], cartocolor(${colorRamp}), category(7))`;
+    <% if (data.map.geometry === 'polygon') { %>
+      const polygon_fill = `ramp([${column}], cartocolor(${colorRamp}), <%- data.map.columnType === 'number' ? 'quantiles' : 'category' -%>(7))`;
+    <% } %>
   <% } %>
 
-  <% if (data.map.geometry === 'polygon') { %>
-    const polygon_fill = `ramp([${column}], cartocolor(${colorRamp}), category(7))`;
-  <% } %>
-<% } %>
-
-<% if (data.map.type === 'choropleth' || data.map.type === 'gradient') { %>
-  <% if (data.map.geometry === 'point') { %>
-    const marker_width = 7;
-    const marker_fill = `ramp([${column}], cartocolor(${colorRamp}), quantiles(7))`;
+  <% if (data.map.type === 'choropleth') { %>
+    <% if (data.map.geometry === 'polygon') { %>
+      const polygon_fill = `ramp([${column}], cartocolor(${colorRamp}), <%- data.map.columnType === 'number' ? 'quantiles' : 'category' -%>(7))`;
+    <% } %>
   <% } %>
 
-  <% if (data.map.geometry === 'line') { %>
-    const line_width = 1.5;
-    const line_color = `ramp([${column}], cartocolor(${colorRamp}), quantiles(7))`;
+  <% if (data.map.type === 'gradient') { %>
+    <% if (data.map.geometry === 'point') { %>
+      const marker_width = 7;
+      const marker_fill = `ramp([${column}], cartocolor(${colorRamp}), <%- data.map.columnType === 'number' ? 'quantiles' : 'category' -%>(7))`;
+    <% } %>
+
+    <% if (data.map.geometry === 'line') { %>
+      const line_width = 1.5;
+      const line_color = `ramp([${column}], cartocolor(${colorRamp}), <%- data.map.columnType === 'number' ? 'quantiles' : 'category' -%>(7))`;
+    <% } %>
   <% } %>
 
-  <% if (data.map.geometry === 'polygon') { %>
-    const polygon_fill = `ramp([${column}], cartocolor(${colorRamp}), quantiles(7))`;
+  <% if (data.map.type === 'flow') { %>
+  const line_width = `ramp([${column}], range(1,2.5), <%- data.map.columnType === 'number' ? 'quantiles' : 'category' -%>(7))`;
+  const line_color = `ramp([${column}], cartocolor(${colorRamp}), <%- data.map.columnType === 'number' ? 'quantiles' : 'category' -%>(7))`;
   <% } %>
-<% } %>
-
-<% if (data.map.type === 'flow') { %>
-const line_width = `ramp([${column}], range(1,2.5), quantiles(7))`;
-const line_color = `ramp([${column}], cartocolor(${colorRamp}), quantiles(7))`;
+<% } else { %>
+  const marker_width = 7;
+  const marker_fill = '#EE4D5A';
 <% } %>
 
 const cartoCSSStyle = new carto.style.CartoCSS(`

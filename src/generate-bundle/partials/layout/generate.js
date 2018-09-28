@@ -10,9 +10,9 @@ import layout from './layout.template.html';
 
 export default function generateLayout (layoutData) {
   const toolbar = layoutData.toolbar ? generateToolbar(layoutData.toolbar) : '';
-  const sidebars = layoutData.sidebars.map(generateSidebar);
+  const sidebars = layoutData.sidebars && layoutData.sidebars.length ? layoutData.sidebars.map(generateSidebar) : '';
   const map = generateMap(layoutData.map);
-  const panels = layoutData.panels.length ? generatePanels(layoutData.panels) : '';
+  const panels = layoutData.panels && layoutData.panels.length ? generatePanels(layoutData.panels) : '';
   const footer = layoutData.footer ? generateMapFooter(layoutData.footer) : '';
 
   return ejs.render(layout, {
