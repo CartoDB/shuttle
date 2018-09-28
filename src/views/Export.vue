@@ -46,7 +46,6 @@ export default {
   },
   methods: {
     exportZip() {
-      debugger;
       generateBundle(this.files);
     },
 
