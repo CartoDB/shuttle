@@ -22,7 +22,6 @@ export const steps = [
 ];
 
 export default new Router({
-  mode: 'history',
   routes: [
     {
       path: '/',
