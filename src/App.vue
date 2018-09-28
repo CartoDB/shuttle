@@ -4,7 +4,7 @@
       <div class="header-progress">
         <ProgressBar :progress="progress"  />
         <div class="header-progressInner">
-          <h1 class="header-progressTitle">Airsephora</h1>
+          <h1 class="header-progressTitle">Shuttle</h1>
           <p class="header-progresshelp">{{ helpForStep }}</p>
           <Progress :completedSteps="completedSteps" :index="routeIndex" />
         </div>

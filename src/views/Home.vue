@@ -2,7 +2,7 @@
   <div class="home">
     <div class="container">
       <img src="/assets/cobete.png" width="130"/>
-      <h1 class="home-title">Airsephora</h1>
+      <h1 class="home-title">Shuttle</h1>
       <p class="home-description">Configure your application, choose your colors, layout, and the CARTO stack</p>
       <button class="home-button" @click='gotoConfig'>Configure</button>
 
