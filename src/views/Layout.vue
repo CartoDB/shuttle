@@ -61,7 +61,7 @@
             </div>
             <div class="bookmark">
               <img src="https://avatars.githubusercontent.com/rubenmoya" />
-              <span>Acid tango</span>
+              <span>Acidtango</span>
             </div>
           </div>
           <BrowserDrop :basemap="currentBasemap" :draggingElement="draggingElement" />
