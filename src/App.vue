@@ -43,6 +43,10 @@ export default {
     previousStep: function () {
       const index = steps.indexOf(this.$route.name);
 
+      if (this.$route.name === 'export') {
+        this.$router.push({ name: steps[steps.length - 1] });
+      }
+
       if (index !== -1 && index > 0) {
         this.$router.push({ name: steps[index - 1]});
       }
@@ -52,8 +56,10 @@ export default {
       this.$store.commit('completeStep', this.$route.name);
       const index = steps.indexOf(this.$route.name);
       
-      if (index !== -1 && index < steps.length) {
+      if (index !== -1 && index < (steps.length - 1)) {
         this.$router.push({ name: steps[index + 1] });
+      } else if (index === (steps.length - 1)) {
+        this.$router.push({ name: 'export' });
       }
     }
   },
@@ -72,6 +78,10 @@ export default {
     },
 
     progress: function () {
+      if (this.$route.name === 'export') {
+        return 100;
+      }
+
       return Math.floor(((this.routeIndex + 1) / steps.length) * 100);
     },
 
