@@ -53,6 +53,14 @@
               <img src="https://avatars.githubusercontent.com/matallo" />
               <span>Transferwise</span>
             </div>
+            <div class="bookmark">
+              <img src="https://avatars.githubusercontent.com/arianaescobar" />
+              <span>Heroku</span>
+            </div>
+            <div class="bookmark">
+              <img src="https://avatars.githubusercontent.com/rubenmoya" />
+              <span>Acid tango</span>
+            </div>
           </div>
           <BrowserDrop :basemap="currentBasemap" :draggingElement="draggingElement" />
         </div>
