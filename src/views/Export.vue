@@ -1,14 +1,18 @@
 <template>
 
 <div>
-  <h1>Here's a preview of your map</h1>
-  <h1>Export to</h1>
-  <button @click="exportZip">Zip file</button>
-  <button @click="exportCodePen">Codepen</button>
-  <button @click="reload">Reload iframe</button>
-  <div>
-    <iframe ref="iframe" class="iframe"></iframe>
-  </div>
+    <div class="export-iframe">
+      <iframe ref="iframe" ></iframe>
+    </div>
+    <div class="export">
+      <h1>Here's a preview of your map</h1>
+      <ul class="export-list">
+        <li><h2>Export to</h2></li>
+        <li><button @click="exportZip" class="export-button">Zip file</button></li>
+        <li><button @click="exportCodePen" class="export-button export-button--secondary">Codepen</button></li>
+        <li><button @click="reload" class="export-button export-button--secondary">Reload iframe</button></li>
+      </ul>
+    </div>
 </div>
 
 </template>
@@ -103,10 +107,59 @@ export default {
 
 
 <style>
-.iframe {
-  width: 1920px;
-  height: 1080px;
-  transform: scale(0.5);
-  transform-origin: 0 0;
-}
+
+  .export-iframe {
+    position: relative;
+    padding-bottom: 56.25%; /*16:9*/
+    padding-top: 30px; 
+    height: 0; 
+    overflow: hidden;
+  }
+   
+  .export-ifram iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+/*  iframe {
+    width: 1920px;
+    height: 1080px;
+    transform: scale(0.5);
+    transform-origin: 0 0;
+  }*/
+  .export {
+    padding: 40px;
+  }
+  .export h1 {
+    font: 700 20px 'Karla';
+    margin-bottom: 20px;
+  }
+  .export-list {
+    display: flex;
+    align-items: center;
+  }
+  .export-list li {
+    margin-right: 24px;
+  }
+  .export-list li h2 {
+    font: 400 16px 'Karla';
+  }
+  .export-button {
+    border: 2px solid transparent;
+    background: transparent;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    padding: 8px 16px;
+    background: #000;
+  }
+  .export-button--secondary {
+    border: 2px solid black;
+    background: transparent;
+    color: #000;
+  }
+
 </style>
