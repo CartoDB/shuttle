@@ -55,9 +55,7 @@ const source = new carto.source.Dataset('<%- data.map.dataset -%>');
 const viz = new carto.Viz(`
   width: ${width}
   color: ${color}
-  strokeWidth: 0.5
-  strokeColor: #191970
-  <% if (data.map.animated) { %>
+  <% if (data.map.type === 'animated') { %>
   filter: animation(linear(${column},globalMin(${column}),globalMax(${column})),30,fade(0.1,0.5))
   <% } %>
 `);
