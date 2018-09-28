@@ -26,7 +26,7 @@ carto.setDefaultAuth({
 const column = '$<%- data.map.column -%>';
 const cartoColorRamp = '<%- data.map.colorRamp -%>';
 
-<% if (data.map.type === 'default') { %>
+<% if (data.map.type === 'default' || data.map.type === 'animated') { %>
   <% if (data.map.geometry === 'point') { %>
     const width = 7;
   <% } else { %>
@@ -36,20 +36,19 @@ const cartoColorRamp = '<%- data.map.colorRamp -%>';
   const color = '#EE4D5A';
 <% } %>
 
-<% if (data.map.type === 'bubbles') { %>
-  const width = `blend(<%- data.map.geometry === "line" ? "1, 2.5" : "2, 20" -%>,${column})`;
+<% if (data.map.type === 'bubbles' || data.map.type === 'flow') { %>
+  const width = `ramp(sqrt(linear(clusterSum(${column}))), [3, 30])\nresolution: 8`;
   const color = '#EE4D5A'
 <% } %>
 
 <% if (data.map.type === 'category' || data.map.type === 'choropleth' || data.map.type === 'gradient') { %>
   const width = `7`;
-  const color = `ramp(<%- data.map.columnType === "number" ? "viewportQuantiles" : "top" -%>(${column}, 10), ${cartoColorRamp})`;
-<% } %>
-
-<% if (data.map.type === 'flow') { %>
-  const width = `ramp([${column}], range(1,2.5), quantiles(7))`;
-  const color = '#EE4D5A';
+  <% if (data.map.columnType === 'number') { %>
+    const color = `ramp(viewportQuantiles(${column}, 7), ${cartoColorRamp})`;
+  <% } else if (data.map.columnType === 'string') { %>
+    const color = `ramp(${column}, ${cartoColorRamp})`;
   <% } %>
+<% } %>
 
 // Define layer
 const source = new carto.source.Dataset('<%- data.map.dataset -%>');
@@ -59,7 +58,7 @@ const viz = new carto.Viz(`
   strokeWidth: 0.5
   strokeColor: #191970
   <% if (data.map.animated) { %>
-  animation: animation(linear(${date},time(${min}),time(${min})),30,fade(0.1,0.5))
+  filter: animation(linear(${column},globalMin(${column}),globalMax(${column})),30,fade(0.1,0.5))
   <% } %>
 `);
 const layer = new carto.Layer('layer', source, viz);
