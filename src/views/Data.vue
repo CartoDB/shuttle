@@ -13,10 +13,13 @@
       <div v-if="geomType !== null && columns !== null">
         <h2 class="data-title">Configure your map</h2> 
         <label class="data-item">
-          <ul class="data-itemList">
-            <li v-for="type in mapTypesForGeom" :key="type" class="data-itemListItem" @click="setMapType(type)">
+          <ul class="list-icons">
+            <li v-for="type in mapTypesForGeom" :key="type" class="list-iconsItem" @click="setMapType(type)">
+              <div class="list-iconsItem">
+                <img :src="`/assets/maptypes/${type}.png`" class="icon-normal" />
+                <img :src="`/assets/maptypes/${type}_selected.png`" class="icon-active" />
+              </div>
               <h2>{{ type }}</h2>
-              <span>imagen</span>
             </li>
           </ul>
           <p>The map variant will determine what type of column you can use to style</p>
@@ -114,6 +117,9 @@ export default {
       }
 
       return [];
+    },
+    imageForMapType() {
+
     },
     columnsForMapType() {
       if (this.columns === null) {
@@ -366,5 +372,61 @@ export default {
   .ramp-color i {
     flex: 1;
     height: 18px;
+  }
+  .list-icons {
+    display: flex;
+    margin-bottom: 32px;
+  }
+  .list-iconsItem {
+    margin-right: 40px;
+  }
+  .list-iconsItem:last-child {
+    margin-right: 0;
+  }
+  .list-iconsItem {
+    position: relative;
+    width: 92px;
+    height: 61px;
+    margin-bottom: 8px;
+  }
+  .list-iconsItem:hover {
+    cursor: pointer;
+  }
+  .list-iconsItem:hover:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 2px solid #000;
+    z-index: 3;
+  }
+  .list-iconsItem.is-active:hover:after {
+    display: none;
+  }
+  .list-iconsItem img {
+    position: absolute;
+    transition: all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+  .list-iconsItem .icon-normal {
+    z-index: 2;
+  }
+  .list-iconsItem .icon-active {
+    opacity: 0;
+  }
+  .list-iconsItem.is-active .icon-normal {
+    opacity: 0;
+  }
+  .list-iconsItem.is-active .icon-active {
+    opacity: 1;
+  }
+  .list-iconsItem h2 {
+    font: 16px 'Karla';
+    color: rgba(0, 0, 0, 0.6);
+  }
+  .list-iconsItem.is-active h2 {
+    font-weight: 700;
+    color: rgba(0, 0, 0, 1);
   }
 </style>
