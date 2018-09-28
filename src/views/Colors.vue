@@ -92,6 +92,7 @@ export default {
 .color-value {
   font-weight: 700;
   font-size: 36px;
+  text-transform: uppercase;
   /* Input style removal */
   background: none;
   border: none;
