@@ -35,7 +35,7 @@ export default new Vuex.Store({
       data: {
         geomType: null,
         mapType: null,
-        username: 'roman-carto',
+        username: null,
         dataset: null,
         extent: null,
         ramp: null,
@@ -127,6 +127,6 @@ export default new Vuex.Store({
       context.commit('setRamp', null);
       context.commit('setColumnName', null);
       context.commit('setColumnType', null);
-    } 
+    }
   }
 })
