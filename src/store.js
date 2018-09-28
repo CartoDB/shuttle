@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import chroma from 'chroma-js';
+import { steps } from '@/router';
 
 Vue.use(Vuex)
 
@@ -20,6 +21,8 @@ export default new Vuex.Store({
       secondary: '#D7E8BA',
       complementary: '#2E5077'
     },
+    completedSteps: [],
+    completedIndex: 0,
     layout: {
       toolbar: {},
       sidebars: [],
@@ -43,6 +46,18 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    completeStep: function (state, step) {
+      const stepIndex = steps.indexOf(step);
+      if (state.completedSteps.indexOf(step) !== -1) {
+        return;
+      }
+
+      state.completedSteps.push(step);
+
+      if (stepIndex > state.completedIndex) {
+        state.completedIndex = stepIndex;
+      }
+    },
     setPrimaryColor: function (state, color) {
       state.color.primary = color;
     },

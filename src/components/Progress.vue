@@ -1,6 +1,6 @@
 <template>
 <ul class="step-wrapper">
-  <li class="step" :class="{ 'step-number--active' : (i <=index ) }" v-for="(step, i) in steps" :key="i" @click="goTo(step)">
+  <li class="step" :class="{ 'step-number--active' : (i <= index ), 'step-number--completed': (completedSteps.indexOf(step) !== -1) }" v-for="(step, i) in steps" :key="i" @click="goTo(step)">
     <div class="step-number"  >
       {{ i + 1 }}
     </div>
@@ -22,6 +22,11 @@ export default {
       default: 0
     }
   },
+  computed: {
+    completedSteps() {
+      return this.$store.state.completedSteps;
+    }
+  },
   data: function () {
     return {
       steps
@@ -29,7 +34,10 @@ export default {
   },
   methods: {
     goTo: function (step) {
-      this.$router.push({ name: step });
+      const stepIndex = steps.indexOf(step);
+      if (stepIndex <= this.$store.state.completedIndex + 1) {
+        this.$router.push({ name: step });
+      }
     }
   },
 
@@ -63,6 +71,9 @@ export default {
 
 .step-number--active {
   border: 2px solid #F2DC5D;
+}
+.step-number--completed {
+  background-color: #fabada;
 }
 .step-number--fill {
   border: 2px solid #7CB4B8;

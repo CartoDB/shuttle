@@ -6,17 +6,17 @@
         <div class="header-progressInner">
           <h1 class="header-progressTitle">Airsephora</h1>
           <p class="header-progresshelp">{{ helpForStep }}</p>
-          <Progress :index="routeIndex" />
+          <Progress :completedSteps="completedSteps" :index="routeIndex" />
         </div>
       </div>
       <ul class="header-actions">
         <li>
-          <button class="header-button is-prev">
-            Anterior
+          <button class="header-button is-prev" @click="previousStep">
+            Previous
           </button>
         </li>
         <li>
-          <button class="header-button">
+          <button class="header-button" @click="completeStep">
             Next
           </button>
         </li>
@@ -39,7 +39,30 @@ export default {
     Progress
   },
 
+  methods: {
+    previousStep: function () {
+      const index = steps.indexOf(this.$route.name);
+
+      if (index !== -1 && index > 0) {
+        this.$router.push({ name: steps[index - 1]});
+      }
+    },
+
+    completeStep: function () {
+      this.$store.commit('completeStep', this.$route.name);
+      const index = steps.indexOf(this.$route.name);
+      
+      if (index !== -1 && index < steps.length) {
+        this.$router.push({ name: steps[index + 1] });
+      }
+    }
+  },
+
   computed: {
+    completedSteps: function () {
+      return this.$store.state.completedSteps;
+    },
+
     routeIndex: function () {
       return steps.indexOf(this.$route.name);
     },
