@@ -41,10 +41,12 @@
     <ul class="export-list">
       <li><h2>Export to</h2></li>
       <li><button @click="exportZip" class="export-button">Zip file</button></li>
-      <li><form action="https://codepen.io/pen/define" method="POST" target="_blank">
-  <input type="hidden" name="data" :value="codepen">
-  <input class="export-button export-button--secondary" type="submit" value="Edit on Codepen">
-</form></li>
+      <li>
+        <form action="https://codepen.io/pen/define" method="POST" target="_blank">
+          <input type="hidden" name="data" :value="codepen">
+          <input class="export-button export-button--secondary" type="submit" value="Edit on Codepen">
+        </form>
+      </li>
     </ul>
   </div>
 </div>
@@ -181,11 +183,11 @@ export default {
   }*/
   .export {
     padding: 40px;
-    margin-top: -100px;
+    margin-top: -70px;
   }
   .export h1 {
-    font: 400 16px 'Karla';
-    margin-bottom: 20px;
+    font: 400 24px 'Karla';
+    margin-bottom: 30px;
   }
   .export-list {
     display: flex;
