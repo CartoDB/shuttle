@@ -27,7 +27,7 @@
         <div v-if="mapType !== null && columnsForMapType.length > 0">
           <label class="data-item">
             <ul class="data-itemList" style="height: 100%;">
-              <li class="data-itemListItem" v-for="column in columnsForMapType" :key="column.name" @click="setColumn(column)">
+              <li class="data-itemListItem" v-for="column in columnsForMapType" :key="column.name" @click="setColumn(column)" :class="{ 'is-active' : column.name === columnName}">
                 <span class="data-tag" :data-value="column.type">{{ column.type }}</span>
                 <h2>{{ column.name }}</h2> 
               </li>
@@ -35,9 +35,9 @@
             <p>Maybe you don't see all the columns you were expecting to see. If this happens it's because the type of map you chose in the previous step doesn't allow the interactaction with this map</p>
           </label>
         </div>
-        <label class="data-item" v-if="columnType !== null && columnsForMapType.length > 0">
+        <label class="data-item" v-if="columnType !== null && columnsForMapType.length > 0 && rampsForColumnType.length > 0">
           <ul class="data-itemList">
-            <li class="data-itemListItem" v-for="ramp in rampsForColumnType" :key="ramp.name" @click="setRamp(ramp.name)">
+            <li class="data-itemListItem" v-for="ramp in rampsForColumnType" :key="ramp.name" @click="setRamp(ramp.name)" :class="{ 'is-active' : ramp.name === rampName }">
               <h2>{{ ramp.name }}</h2>
               <div class="ramp-color">
                 <i v-for="(color, index) in ramp.ramp" :key="index" :style="{ 'background-color': color }"/>
@@ -117,9 +117,6 @@ export default {
       }
 
       return [];
-    },
-    imageForMapType() {
-
     },
     columnsForMapType() {
       if (this.columns === null) {
@@ -210,6 +207,10 @@ export default {
 
     columnName() {
       return this.$store.state.visualization.data.columnName;
+    },
+
+    rampName() {
+      return this.$store.state.visualization.data.ramp;
     },
 
     isVector() {
