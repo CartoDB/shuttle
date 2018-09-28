@@ -1,4 +1,6 @@
 module.exports = {
+  baseUrl: '/airsephora/',
+  outputDir: 'docs',
   configureWebpack: {
     module: {
       rules: [
