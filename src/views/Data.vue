@@ -15,7 +15,7 @@
         <label class="data-item">
           <h3 class="data-subtitle">Choose your type of map</h3>
           <ul class="list-icons">
-            <li v-for="type in mapTypesForGeom" :key="type" class="list-iconsItem" @click="setMapType(type)" :class="{ 'is-active' : type === mapType}">
+            <li v-for="type in mapTypesForGeom" :key="type" class="list-iconsItem" @click="setMapType(type)" :class="{ 'is-active' : type === mapType, 'is-disabled': type === 'animated' && !isVector }">
               <div class="list-iconsItem">
                 <img :src="`/assets/maptypes/${type}.png`" class="icon-normal" />
                 <img :src="`/assets/maptypes/${type}_selected.png`" class="icon-active" />
@@ -38,7 +38,7 @@
           </label>
         </div>
 
-        <label class="data-item" v-if="mapType !== 'bubble' && mapType !== 'flow' && columnType !== null && columnsForMapType.length > 0 && rampsForColumnType.length > 0">
+        <label class="data-item" v-if="mapType !== 'bubbles' && mapType !== 'animated' && mapType !== 'flow' && columnType !== null && columnsForMapType.length > 0 && rampsForColumnType.length > 0">
           <h3 class="data-subtitle">Choose your color ramp</h3>
           <ul class="data-itemList">
             <li class="data-itemListItem" v-for="ramp in rampsForColumnType" :key="ramp.name" @click="setRamp(ramp.name)" :class="{ 'is-active' : ramp.name === rampName }">
@@ -219,7 +219,7 @@ export default {
     },
 
     isVector() {
-      return this.$store.state.techType === 'vl';
+      return this.$store.state.techType === 'cartovl';
     }
   },
 
@@ -438,6 +438,10 @@ export default {
   .list-iconsItem.is-active h2 {
     font-weight: 700;
     color: rgba(0, 0, 0, 1);
+  }
+  .list-iconsItem.is-disabled {
+    pointer-events: none;
+    opacity: 0.24;
   }
   .data-subtitle {
     font: 400 20px 'karla';
