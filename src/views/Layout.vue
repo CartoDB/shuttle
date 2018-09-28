@@ -188,7 +188,7 @@ export default {
     onDrag: function (e) {
       this.draggingElement = e.srcElement.dataset.type;
     },
-    onDragEnd: function (e) {
+    onDragEnd: function () {
       this.draggingElement = null;
     },
     onEasterEgg: function(e) {

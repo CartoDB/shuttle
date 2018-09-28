@@ -24,7 +24,7 @@
         <div v-if="mapType !== null && columnsForMapType.length > 0">
           <label class="data-item">
             <ul class="data-itemList" style="height: 100%;">
-              <li class="data-itemListItem" v-for="column in columnsForMapType" :key="column.name" @click="setColumn(column.name)">
+              <li class="data-itemListItem" v-for="column in columnsForMapType" :key="column.name" @click="setColumn(column)">
                 <span class="data-tag" :data-value="column.type">{{ column.type }}</span>
                 <h2>{{ column.name }}</h2> 
               </li>
@@ -32,9 +32,9 @@
             <p>Maybe you don't see all the columns you were expecting to see. If this happens it's because the type of map you chose in the previous step doesn't allow the interactaction with this map</p>
           </label>
         </div>
-        <label class="data-item">
+        <label class="data-item" v-if="columnType !== null && columnsForMapType.length > 0">
           <ul class="data-itemList">
-            <li class="data-itemListItem" v-for="ramp in colorRamps" :key="ramp.name" @click="setRamp(ramp.name)">
+            <li class="data-itemListItem" v-for="ramp in rampsForColumnType" :key="ramp.name" @click="setRamp(ramp.name)">
               <h2>{{ ramp.name }}</h2>
               <div class="ramp-color">
                 <i v-for="(color, index) in ramp.ramp" :key="index" :style="{ 'background-color': color }"/>
@@ -127,7 +127,6 @@ export default {
           types.push('string');
           break;
         case 'choropleth':
-        case 'category':
         case 'bubbles':
         case 'gradient':
         case 'flow':
@@ -142,6 +141,23 @@ export default {
       }
 
       return this.columns.filter(column => types.indexOf(column.type) !== -1);
+    },
+
+    rampsForColumnType() {
+      const types = [];
+      switch (this.columnType) {
+        case 'number':
+          types.push('quantitative')
+          types.push('diverging');
+          break;
+        case 'string':
+          types.push('qualitative');
+          break;
+        default:
+          return [];
+      }
+
+      return this.colorRamps.filter(ramp => types.indexOf(ramp.type) !== -1);
     },
 
     showColumns() {
@@ -180,16 +196,33 @@ export default {
       set (value) {
         this.$store.commit('setColumns', value);
       }
+    },
+
+    columnType() {
+      return this.$store.state.visualization.data.columnType;
+    },
+
+    columnName() {
+      return this.$store.state.visualization.data.columnName;
+    },
+
+    isVector() {
+      return this.$store.state.techType === 'vl';
     }
   },
 
   methods: {
     setMapType(value) {
       this.$store.commit('setMapType', value);
+      this.$store.commit('setColumnName', null);
+      this.$store.commit('setColumnType', null);
+      this.$store.commit('setRamp', null);
     },
     
     setColumn(column) {
-      this.$store.commit('setColumn', column);
+      this.$store.commit('setColumnName', column.name);
+      this.$store.commit('setColumnType', column.type);
+      this.$store.commit('setRamp', null);
     },
     
     setRamp(ramp) {
@@ -276,14 +309,14 @@ export default {
   }
   .data-itemList {
     border: 2px solid #000;
-    height: 38px;
+    /* height: 38px; */
     overflow: hidden;
     margin-bottom: 8px;
     transition: height 0.2 linear;
   }
   .data-itemList:hover {
     border: 2px solid #F2DC5D;
-    height: 250px;
+    /* height: 250px; */
     overflow: auto;
   }
   .data-itemListItem {

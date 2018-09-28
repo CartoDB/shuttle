@@ -26,6 +26,7 @@ export default new Vuex.Store({
       panels: [],
       footer: null
     },
+    techType: 'vl',
     visualization: {
       basemap: 'voyager',
       data: {
@@ -35,7 +36,8 @@ export default new Vuex.Store({
         dataset: null,
         extent: null,
         ramp: null,
-        column: null,
+        columnName: null,
+        columnType: null,
         columns: null
       }
     }
@@ -65,8 +67,11 @@ export default new Vuex.Store({
     setMapType: function (state, mapType)  {
       state.visualization.data.mapType = mapType;
     },
-    setColumn: function (state, column) {
-      state.visualization.data.column = column;
+    setColumnName: function (state, columnName) {
+      state.visualization.data.columnName = columnName;
+    },
+    setColumnType: function (state, columnType) {
+      state.visualization.data.columnType = columnType;
     },
     setRamp: function (state, ramp) {
       state.visualization.data.ramp = ramp;
@@ -101,7 +106,8 @@ export default new Vuex.Store({
       context.commit('setGeomType', null);
       context.commit('setMapType', null);
       context.commit('setRamp', null);
-      context.commit('setColumn', null);
+      context.commit('setColumnName', null);
+      context.commit('setColumnType', null);
     } 
   }
 })

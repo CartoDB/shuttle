@@ -89,8 +89,7 @@ export default {
 
       this.$store.state.layout[element] = { position: position[0] };
     },
-    drop(event) {
-      console.log({ event }, arguments);
+    drop() {
     },
     styleForPanel (h, v) {
       const itemSet = this.$store.state.layout.panels.some(panel => panel.horizontalPosition === h && panel.verticalPosition === v);
@@ -116,13 +115,13 @@ export default {
       }
 
       const hasSidebarLeft = this.$store.state.layout.sidebars.some(sidebar => sidebar.position === h);
-      if (hasSidebarLeft || this.draggingElement === 'sidebar') {
+      if (hasSidebarLeft || this.draggingElement === 'sidebar') {
         hOffset += SIDEBAR_SIZE;
       }
 
       let vOffset = 0;
 
-      if ((v === 'top' && this.$store.state.layout.toolbar.position === 'top') || (v === 'top' && this.draggingElement === 'topToolbar')) {
+      if ((v === 'top' && this.$store.state.layout.toolbar.position === 'top') || (v === 'top' && this.draggingElement === 'topToolbar')) {
         vOffset += TOOLBAR_SIZE;
       }
 
@@ -147,7 +146,7 @@ export default {
       }
 
       if (element === 'panels') {
-        this.$store.state.layout.panels = this.$store.state.layout.panels.filter(panel => !(panel.verticalPosition === position[0] && panel.horizontalPosition === position[1]))
+        this.$store.state.layout.panels = this.$store.state.layout.panels.filter(panel => !(panel.verticalPosition === position[0] && panel.horizontalPosition === position[1]))
         return;
       }
 
@@ -229,8 +228,8 @@ export default {
         style['opacity'] = this.draggingElement === 'sidebar' ? 1 : 0;
       }
 
-      style['top'] = (this.$store.state.layout.toolbar.position === 'top' || this.draggingElement === 'topToolbar') ? `${TOOLBAR_SIZE}px` : 0;
-      style['left'] = (this.$store.state.layout.toolbar.position === 'left'  || this.draggingElement === 'lateralToolbar') ? `${TOOLBAR_SIZE}px` : 0;
+      style['top'] = (this.$store.state.layout.toolbar.position === 'top' || this.draggingElement === 'topToolbar') ? `${TOOLBAR_SIZE}px` : 0;
+      style['left'] = (this.$store.state.layout.toolbar.position === 'left'  || this.draggingElement === 'lateralToolbar') ? `${TOOLBAR_SIZE}px` : 0;
       style['bottom'] = 0;
       style['width'] = `${SIDEBAR_SIZE}px`;
 
@@ -273,12 +272,12 @@ export default {
       }
 
       const hasSidebarLeft = this.$store.state.layout.sidebars.some(sidebar => sidebar.position === 'left');
-      if (hasSidebarLeft || this.draggingElement === 'sidebar') {
+      if (hasSidebarLeft || this.draggingElement === 'sidebar') {
         leftOffset += SIDEBAR_SIZE;
       }
 
       let rightOffset = 0;
-      if (this.$store.state.layout.toolbar.position === 'right' || this.$store.state.layout.draggingElement === 'lateralToolbar') {
+      if (this.$store.state.layout.toolbar.position === 'right' || this.$store.state.layout.draggingElement === 'lateralToolbar') {
         rightOffset += TOOLBAR_SIZE;
       }
 
