@@ -167,7 +167,7 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    width: calc(100% + 20%);
+    width: calc(100% + 20% + 50px);
     height: 100%;
     transform: scale(.8);
     transform-origin: 0 0;
