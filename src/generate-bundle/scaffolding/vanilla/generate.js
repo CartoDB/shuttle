@@ -3,7 +3,7 @@ import ejs from 'ejs';
 import { js, html } from 'js-beautify';
 
 // Vanilla Template Files
-import jsFile from 'raw-loader!./templates/app.template.js';
+import jsFile from './templates/app.template.code';
 import htmlFile from './templates/index.template.html';
 
 import injectTemplate from './templates/inject.template.html'

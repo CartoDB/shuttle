@@ -38,7 +38,7 @@
     }
   },
   "eslintIgnore": [
-    "**/*.template.js",
+    "**/*.template.code",
     "**/*.template.html"
   ],
   "postcss": {
