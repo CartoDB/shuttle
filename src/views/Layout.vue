@@ -1,10 +1,7 @@
 <template>
   <div class="inner">
     <div class="container">
-      <select v-model="basemap">
-        <option value="voyager" selected>Voyager</option>
-        <option value="darkmatter">Dark Matter</option>
-      </select>
+
 
       <div class="browser">
         <div class="browser-header">
@@ -30,7 +27,12 @@
                 </svg>
               </li>
             </ul>
-            <div class="browser-barAddress">http://cartodb.github.io/airsephora<span></span></div>
+            <div class="browser-barAddress">
+              <select v-model="basemap">
+                <option value="voyager" selected>Voyager</option>
+                <option value="darkmatter">Dark Matter</option>
+              </select>
+            </div>
           </div>
           <div class="bookmarks-bar" v-if="easterEgg">
             <div class="bookmark">
@@ -449,5 +451,16 @@ export default {
     left: -1000px;
     top: -1000px;
     opacity: 0;
+  }
+  .browser-barAddress select {
+    -webkit-appearance: none;
+    appearance: none;
+    background: none;
+    border: 0;
+    width: 100%;
+    display: block;
+  }
+  .browser-barAddress select:focus {
+    outline: none;
   }
 </style>
