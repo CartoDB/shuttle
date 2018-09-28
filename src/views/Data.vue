@@ -37,7 +37,8 @@
             <p>Maybe you don't see all the columns you were expecting to see. If this happens it's because the type of map you chose in the previous step doesn't allow the interactaction with this map</p>
           </label>
         </div>
-        <label class="data-item" v-if="columnType !== null && columnsForMapType.length > 0 && rampsForColumnType.length > 0">
+
+        <label class="data-item" v-if="mapType !== 'bubble' && mapType !== 'flow' && columnType !== null && columnsForMapType.length > 0 && rampsForColumnType.length > 0">
           <h3 class="data-subtitle">Choose your color ramp</h3>
           <ul class="data-itemList">
             <li class="data-itemListItem" v-for="ramp in rampsForColumnType" :key="ramp.name" @click="setRamp(ramp.name)" :class="{ 'is-active' : ramp.name === rampName }">
