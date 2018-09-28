@@ -1,9 +1,7 @@
 <template>
 <ul class="step-wrapper">
   <li class="step" :class="{ 'step-number--active' : (i <= index ), 'step-number--completed': (completedSteps.indexOf(step) !== -1) }" v-for="(step, i) in steps" :key="i" @click="goTo(step)">
-    <div class="step-number"  >
-      {{ i + 1 }}
-    </div>
+
     <div class="step-name">
       {{ step }}
     </div>
@@ -50,32 +48,35 @@ export default {
 
 .step {
   display: flex;
-  cursor: pointer;
   margin-bottom: 20px;
   background:rgba(0, 0, 0, 0.02);
-  padding: 10px;
+  padding: 20px;
   align-items: center;
   border: 2px solid transparent;
+  color: rgba(0, 0, 0, 0.2);
 }
 .step:last-child {
   margin-bottom: 0;
 }
 .step-name {
   font: 20px 'Karla';
+  text-transform: capitalize;
 }
 
 .step-number {
   font:  40px 'Playfair Display';
   margin-right: 8px;
+    transition: all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
 .step-number--active {
-  border: 2px solid #F2DC5D;
+  border: 2px solid #000;
+  color: rgba(0, 0, 0, 1);
 }
-.step-number--completed {
-  background-color: #fabada;
+.step-number--active.step-number--completed {
+  background-color: #3BCEAC;
+  border: 2px solid #3BCEAC;
+  color: #fff;
 }
-.step-number--fill {
-  border: 2px solid #7CB4B8;
-}
+
 </style>
