@@ -136,8 +136,10 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: calc(100% + 20%);
     height: 100%;
+    transform: scale(.8);
+    transform-origin: 0 0;
   }
 
 /*  iframe {
@@ -148,6 +150,7 @@ export default {
   }*/
   .export {
     padding: 40px;
+    margin-top: -100px;
   }
   .export h1 {
     font: 700 20px 'Karla';
