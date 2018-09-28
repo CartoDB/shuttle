@@ -11,7 +11,7 @@
       <li><button @click="exportZip" class="export-button">Zip file</button></li>
       <li><form action="https://codepen.io/pen/define" method="POST" target="_blank">
   <input type="hidden" name="data" :value="codepen">
-  <input class="export-button" type="submit" value="Edit on Codepen">
+  <input class="export-button export-button--secondary" type="submit" value="Edit on Codepen">
 </form></li>
       <li><button @click="reload" class="export-button export-button--secondary">Reload iframe</button></li>
     </ul>
