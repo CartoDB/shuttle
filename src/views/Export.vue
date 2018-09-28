@@ -45,7 +45,6 @@
   <input type="hidden" name="data" :value="codepen">
   <input class="export-button export-button--secondary" type="submit" value="Edit on Codepen">
 </form></li>
-      <li><button @click="reload" class="export-button export-button--secondary">Reload iframe</button></li>
     </ul>
   </div>
 </div>
