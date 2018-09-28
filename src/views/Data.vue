@@ -13,6 +13,7 @@
       <div v-if="geomType !== null && columns !== null">
         <h2 class="data-title">Configure your map</h2> 
         <label class="data-item">
+          <h3 class="data-subtitle">Choose your type of map</h3>
           <ul class="list-icons">
             <li v-for="type in mapTypesForGeom" :key="type" class="list-iconsItem" @click="setMapType(type)" :class="{ 'is-active' : type === mapType}">
               <div class="list-iconsItem">
@@ -26,7 +27,8 @@
         </label>
         <div v-if="mapType !== null && columnsForMapType.length > 0">
           <label class="data-item">
-            <ul class="data-itemList" style="height: 100%;">
+            <h3 class="data-subtitle">Choose your column</h3>
+            <ul class="data-itemList">
               <li class="data-itemListItem" v-for="column in columnsForMapType" :key="column.name" @click="setColumn(column)" :class="{ 'is-active' : column.name === columnName}">
                 <span class="data-tag" :data-value="column.type">{{ column.type }}</span>
                 <h2>{{ column.name }}</h2> 
@@ -36,12 +38,14 @@
           </label>
         </div>
         <label class="data-item" v-if="columnType !== null && columnsForMapType.length > 0 && rampsForColumnType.length > 0">
+          <h3 class="data-subtitle">Choose your color ramp</h3>
           <ul class="data-itemList">
             <li class="data-itemListItem" v-for="ramp in rampsForColumnType" :key="ramp.name" @click="setRamp(ramp.name)" :class="{ 'is-active' : ramp.name === rampName }">
-              <h2>{{ ramp.name }}</h2>
               <div class="ramp-color">
                 <i v-for="(color, index) in ramp.ramp" :key="index" :style="{ 'background-color': color }"/>
               </div>
+              <h2>{{ ramp.name }}</h2>
+
             </li>
           </ul>
           <p>The color scheme you pick will be used on certain map types.</p>
@@ -290,8 +294,9 @@ export default {
     overflow: scroll;
   }
   .data-item {
-    margin-bottom: 40px;
+    margin-bottom: 60px;
     display: block;
+    margin-left: 20px;
   }
   .data-item p {
     font: 14px 'Karla';
@@ -317,21 +322,21 @@ export default {
   .data-itemList {
     border: 2px solid #000;
     /* height: 38px; */
-    overflow: hidden;
-    margin-bottom: 8px;
+    margin-bottom: 20px;
     transition: height 0.2 linear;
-  }
-  .data-itemList:hover {
-    border: 2px solid #F2DC5D;
-    /* height: 250px; */
-    overflow: auto;
+    max-height: 164px;
+    overflow: scroll;
+    height: 100%;
   }
   .data-itemListItem {
-    padding: 8px;
+    padding: 12px;
     display: flex;
     align-items: center;
     border-bottom: 2px solid #000;
     cursor: pointer;
+  }
+  .data-itemListItem.is-active {
+    background: #F2DC5D
   }
   .data-itemListItem:hover {
     background-color: #F2DC5D;
@@ -368,6 +373,9 @@ export default {
   .ramp-color {
     width: 100%;
     display: flex;
+    min-width: 51px;
+    width: 51px;
+    margin-right: 8px;
   }
 
   .ramp-color i {
@@ -429,5 +437,10 @@ export default {
   .list-iconsItem.is-active h2 {
     font-weight: 700;
     color: rgba(0, 0, 0, 1);
+  }
+  .data-subtitle {
+    font: 400 20px 'karla';
+    margin-bottom: 20px;
+
   }
 </style>
