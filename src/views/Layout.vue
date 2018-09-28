@@ -358,10 +358,10 @@ export default {
   .template-inner {
     display: flex;
     flex-wrap: wrap;
-    padding: 40px;
+    padding: 40px 20px;
   }
   .template-innerItem {
-    margin-right: 40px;
+    margin-right: 20px;
   }
   .template-innerItem:last-child{
     margin-right: 0;
